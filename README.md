@@ -4,7 +4,144 @@
 
 The code base to accompany the manuscript "Consumer Credit Usage in Canada during the Coronavirus Pandemic" by Ho, Morin, Paarsch and Huynh in the Canadian Journal of Economics, 2021
 
-## Instructions:
+
+## Data Availability
+
+The primary data source is the TransUnion credit bureau. 
+Data are provided to the Bank of Canada on a monthly basis. 
+Under the contractual agreement with TransUnion, 
+the data are not publicly available. 
+The Bank of Canada does, however, have a process for external researchers 
+to work with these data. 
+The Bank of Canada's Financial System Research Center 
+is a hub for research on household finance 
+(https://www.bankofcanada.ca/research/financial-system-research-centre/). Interested parties, who are Canadian citizens or permanent residents, 
+can contact Jason Allen (Jallen@bankofcanada.ca) 
+or the Managing Director of research Jim MacGee (JMacGee@bankofcanada.ca).
+Interested parties are asked to submit a project proposal; 
+the proposal is evaluated by senior staff at the Bank of Canada for feasibility; 
+external researchers do not typically have direct access to the data 
+and must work with a Bank of Canada staff member. 
+An exception is if an external collaborator applies for 
+and is granted temporary employee status -- in this case, 
+the external researcher can access the data 
+so long as they have a Bank of Canada affiliation. 
+All research is vetted by Bank of Canada senior staff prior to publication. 
+
+
+
+# Instructions:
+
+
+
+## Data Manipulation
+
+These procedures were performed 
+on the EDITH 2.0 computing cluster
+at the Bank of Canada
+to generate the primary datasets. 
+
+1. Run the SLURM script tu_ind_bc.slurm, 
+  which runs the Python script tu_ind_bc.py
+  and generates a temporary parquet file df_ind.parquet. 
+  This dataset comprises individual-level data 
+  that is sufficient to run the data manipulation for 
+  credit-card accounts on the nation-wide sample. 
+
+1. Run the script tu_bc.slurm, 
+  which runs the script tu_sample_bc.py
+  and generates the dataset tu_sample_bc.csv. 
+  This dataset is sufficient to run the 
+  analysis of credit-card accounts on the nation-wide sample. 
+  
+1. Run the script tu_bc_comp.slurm, 
+  which runs the script tu_bc_comp.py
+  and generates the dataset tu_bc_comp.csv. 
+  This dataset provides the input for
+  Table A1: Comparison of Accounts at the Credit Agency 
+  with Nation-Wide Totals in The Nilson Report. 
+  
+1. Run the script tu_bc_prov.slurm, 
+  which runs the script tu_bc_prov.py
+  and generates the dataset tu_bc_prov.csv. 
+  This dataset provides the input for
+  FIGURE A1.2: Credit Data Coverage for Adults in Canada, by Province. 
+
+1. Run the script tu_ind_he.slurm, 
+  which runs the script tu_ind_he.py
+  and generates a temporary parquet file df_ind.parquet. 
+  This dataset comprises individual-level data 
+  that is sufficient to run the data manipulation for 
+  HELOC accounts on the nation-wide sample. 
+
+1. Run the script tu_he.slurm, 
+  which runs the script tu_sample_he.py
+  and generates the dataset tu_sample_he.csv. 
+  This dataset is sufficient to run the 
+  analysis of HELOC accounts on the nation-wide sample. 
+
+1. Run the script tu_ind_AB_bc.slurm, 
+  which runs the script tu_ind_AB_bc.py
+  and generates a temporary parquet file df_ind.parquet. 
+  This dataset comprises individual-level data 
+  that is sufficient to run the data manipulation for 
+  credit-card accounts on the nation-wide sample. 
+
+1. Run the script tu_AB_bc.slurm, 
+  which runs the script tu_AB_sample_bc.py
+  and generates the dataset tu_AB_sample_bc.csv. 
+  This dataset is sufficient to run the 
+  analysis of credit-card accounts on the Alberta sample. 
+
+1. Run the script tu_ind_AB_he.slurm, 
+  which runs the script tu_ind_AB_he.py
+  and generates a temporary parquet file df_ind.parquet. 
+  This dataset comprises individual-level data 
+  that is sufficient to run the data manipulation for 
+  HELOC accounts on the Alberta sample. 
+
+1. Run the script tu_AB_he.slurm, 
+  which runs the script tu_AB_sample_he.py
+  and generates the dataset tu_AB_sample_he.csv. 
+  This dataset is sufficient to run the 
+  analysis of HELOC accounts on the Alberta sample. 
+  
+
+1. Run the script tu_bc_agg.slurm, 
+  which runs the script tu_agg_bc.py
+  and generates the dataset tu_BC_time.csv. 
+  This dataset provides the input for
+  panel (a) of Figure 1: Consumers' Outstanding Balances, 2017-2020
+  for credit-card accounts on the nation-wide sample. 
+
+1. Run the script tu_he_agg.slurm, 
+  which runs the script tu_agg_he.py
+  and generates the dataset tu_HE_time.csv. 
+  This dataset provides the input for
+  panel (b) of Figure 1: Consumers' Outstanding Balances, 2017-2020
+  for HELOC accounts on the nation-wide sample. 
+
+1. Run the script tu_AB_bc_agg.slurm, 
+  which runs the script tu_AB_agg_bc.py
+  and generates the dataset tu_AB_BC_time.csv. 
+  This dataset provides the input for
+  panel (a) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
+  for credit-card accounts on the Alberta sample. 
+
+1. Run the script tu_AB_he_agg.slurm, 
+  which runs the script tu_AB_agg_he.py
+  and generates the dataset tu_AB_HE_time.csv. 
+  This dataset provides the input for
+  panel (b) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
+  for HELOC accounts on the Alberta sample. 
+  
+
+
+
+## Statistical Analysis
+
+These procedures were performed on a microcomputer
+to generate the tables and figures in the paper.
 
 ### All Files in One Script:
 
@@ -29,7 +166,7 @@ eps files to the ```Figures``` folder.
 
 ### Generating Sets of Files Separately
 
-#### Nation-wide Sample of Credit-Card Accounts
+#### Nation-Wide Sample of Credit-Card Accounts
 
 1. Place the dataset 
 ```tu_sample_bc.csv```
@@ -59,7 +196,7 @@ where ```MM``` represents the two-digit month of the
 ```Run_date``` after the close of the corresponding statement month. 
 
 
-#### Nation-wide Sample of HELOC Accounts
+#### Nation-Wide Sample of HELOC Accounts
 
 1. Place the dataset
 ```tu_sample_he.csv```
@@ -71,11 +208,11 @@ in a terminal window from the ```Credit_COVID19_Canada``` folder.
 1. Obtain the tex files 
 ```HE_KLD_kstep_monthly_01.tex``` and
 ```HE_KLD_vs_sample_01.tex``` 
-with numbers for columns 2 and 3 of Tables 1 and 2 
+with numbers for columns 4 and 5 of Tables 1 and 2 
 from the ```Tables``` folder. 
 
 1. Obtain the images
-for panels (a) of Figures 2 and 3 in the eps files
+for panels (a) of Figures 4 and 5 in the eps files
 ```HE_hist_grp.eps``` and 
 ```HE_3D_probs_discrete_1.eps```
 from the ```Figures``` folder.
@@ -123,32 +260,25 @@ in the ```Figures``` folder.
 
 #### Auxilliary Tables and Figures
 
-See the section below
+For instructions for generating the remaining tables and figures, 
+see the section below
 "Generating Tables and Figures Individually".
 
-1. Place datasets 
-```A.csv``` and ```B.csv```
-in the ```Data``` folder. 
-1. Run the following auxiliary scripts, in any order, 
-to obtain Figures 1, 8, A1.1 and A1.2, 
-as well as Table A1, 
-which will also be saved in either the ```Figures``` or ```Tables``` folder, according to the type of file.
-  a. Run script X to generate eps files 
-  CC_agg_series.eps and HE_agg_series.eps for Figure 1.
-  a. Run script X to generate eps files 
-  AB_CC_agg_series.eps and AB_HE_agg_series.eps for Figure 8.
-  a. Run script X to generate eps file Y for Figure A1.1.
-  a. Run script X to generate csv file Y for Table A1.
-  a. Run script X to generate eps file Y for Figure A1.2.
 
 
 
-## Data Requirements
+
+## Datasets
 
 ### Main datasets
 
-The ```Data``` folder must contain two datasets: 
-```tu_sample_bc.csv``` and ```tu_sample_he.csv```. 
+The ```Data``` folder must contain four datasets: 
+```tu_sample_bc.csv``` and ```tu_sample_he.csv```
+for the nation-wide sample, 
+as well as
+```tu_AB_sample_bc.csv``` and ```tu_AB_sample_he.csv```
+for the sample restricted to the province of Alberta. 
+
 
 #### tu_sample_bc.csv
 
@@ -174,13 +304,19 @@ This dataset contains observations of HELOC balances for consumers in Canada fro
 1. N_he is the number of HELOC accounts held by a consumer.
 1. he_bal is the consumer's HELOC balance in dollars. 
 
+#### tu_AB_sample_bc.csv and tu_AB_sample_bc.csv
+
+These datasets have the same format as for
+```tu_sample_bc.csv``` and ```tu_sample_he.csv```, 
+described above. 
+
 ### Auxiliary datasets
 
 #### Time series plots
 
 The ```Data``` folder also contains two datasets for generating 
 aggregate time-series in Figure 1. 
-The files ```tu_BC_time.csv``` and ```tu_HELOC_time.csv``` contain 
+The files ```tu_BC_time.csv``` and ```tu_HE_time.csv``` contain 
 time series of aggregate statistics throughout the sample. 
 
 These files both contain the following variables.
@@ -196,24 +332,41 @@ for generating
 aggregate time-series in Figure 8. 
 The files ```tu_AB_BC_time.csv``` and ```tu_AB_HELOC_time.csv``` 
 contain time series of aggregate statistics throughout the sample, 
+in an identical format, except that these were
 restricted to the province of Alberta. 
 
 
-#### Other datasets
+#### Other data
 
 Other data were obtained to produce tables and figures of 
 aggregate information about the credit-card and HELOC markets. 
 These include:
-- The Nilson Report, 2018-2019
-- Census Data: Stats Canada Series XYZ
-- Bank of Canada Regulatory Returns (whatever these are called)
+- The Nilson Report, April 2020, Issue 1173, HSN Consultants, Inc.
+- Chartered bank selected assets: Month-end (formerly C1), Credit cards, 
+  Bank of Canada, accessed June 2020. 
+- Estimates of population (2016 Census and administrative data), by age group 
+  and sex for July 1st, Canada, provinces, territories, 
+    health regions (2018 boundaries) and peer groups, Table: 17-10-0134-01, 
+    Statistics Canada, accessed June 2020. 
 
 
+#### Delete this section, after placing below:
 
-## Data Availability
-
-The primary data source is the TransUnion credit bureau. Data are provided to the Bank of Canada on a monthly basis. Under the contractual agreement with TransUnion, the data are not publicly available. The Bank of Canada does, however, have a process for external researchers to work with these data. The Bank of Canada's Financial System Research Center is a hub for research on household finance (https://www.bankofcanada.ca/research/financial-system-research-centre/). Interested parties, who are Canadian citizens or permanent residents, can contact Jason Allen (Jallen@bankofcanada.ca) or the Managing Director of research Jim MacGee (JMacGee@bankofcanada.ca). Interested parties are asked to submit a project proposal; the proposal is evaluated by senior staff at the Bank of Canada for feasibility; external researchers do not typically have direct access to the data and must work with a Bank of Canada staff. An exception is if an external collaborator applies and is granted temporary employee status -- in this case the external researcher can access the data so long as they have a Bank of Canada affiliation. All research is vetted by Bank of Canada senior staff prior to publication. 
-
+1. Place datasets 
+```A.csv``` and ```B.csv```
+in the ```Data``` folder. 
+1. Run the following auxiliary scripts, in any order, 
+to obtain Figures 1, 8, A1.1 and A1.2, 
+as well as Table A1, 
+which will also be saved in either the ```Figures``` or ```Tables``` folder, according to the type of file.
+  a. Run script X to generate eps files 
+  CC_agg_series.eps and HE_agg_series.eps for Figure 1.
+  a. Run script X to generate eps files 
+  AB_CC_agg_series.eps and AB_HE_agg_series.eps for Figure 8.
+  a. Run script X to generate eps file Y for Figure A1.1.
+  a. Run script X to generate csv file Y for Table A1.
+  a. Run script X to generate eps file Y for Figure A1.2.
+  
 
 ## Generating Tables and Figures Individually
 
@@ -408,14 +561,28 @@ Two of the series were created using the sample from the TransUnion database
 with the following script: 
 NAME_OF_SCRIPT.py
 
-THe other series is derived from an internal database housed at the 
+The other series is derived from an internal database housed at the 
 Bank of Canada and collected from regulatory returns. 
+It is available on the 
+"Banking and Financial Statistics"
+Webpage of the Bank of Canada and is called
+*Chartered bank selected assets: Month-end (formerly C1)*. 
+We use the row of the table labeled "Credit cards". 
 
 
 #### Figure A1.2: Credit Data Coverage for Adults in Canada, by Province
 
-The numbers in this figure were calculated with the script
-NAME_OF_SCRIPT.py in the Code folder. 
+The numbers in this figure were calculated with the scripts
+NAME_OF_SCRIPT.py and 
+NAME_OF_OTHER_SCRIPT.R in the Code folder. 
+It requires the dataset 
+pop_by_prov_and_age.csv, 
+comprising the figures obtained from Statistics Canada 
+in the table called
+*Estimates of population (2016 Census and administrative data), by age group *
+  *and sex for July 1st, Canada, provinces, territories, * 
+  *health regions (2018 boundaries) and peer groups, *
+Table: 17-10-0134-01.
 
 
 
@@ -424,8 +591,23 @@ NAME_OF_SCRIPT.py in the Code folder.
 ### Data Manipulation
 
 The csv files in the Data folder 
-were generated on the EDITH 2.0 cluster housed at the Bank of Canada. 
-It is a cluster of X CPUs with Y characteristics. 
+were generated on the 
+EDITH 2.0 High Performance cluster 
+housed at the Bank of Canada. 
+It is a cluster of
+Nvidia Tesla K80 GPU Accelerators,
+each with 12 GB of GDDR5 on-board memory, 
+running
+2496 processor cores, 
+with base core clock speed of 560 MHz
+boost clocks from 562 MHz to 875 MHz, 
+and with a memory clock speed of 2.5 GHz on
+48 pieces of 256M × 16 GDDR5 SDRAM, 
+producing a memory bandwidth of 240GB/s per GPU. 
+
+For the queries that generated the datasets, 
+36 CPUs with 240 GB of memory were sufficient
+to create the datasets within at most 24 hours each. 
 
 
 ### Statistical Analysis
@@ -434,15 +616,38 @@ Once the datasets have been saved in the Data folder,
 the remaining analysis, including the generation of all the tables
 and figures in the paper can be performed on a single microcomputer, 
 such as a laptop computer.
-The particular model of computer is a 
-standard issue Dell Garbagewagon model 2000,
-running Windows 10 x64.
+The particular model of computer 
+on which the statistical analysis was run
+is a 
+Dell Precision 3520,
+running a 64-bit Windows 10 operating system, 
+with a 4-core x64-based processor,
+model Intel(R) Core(TM) i7-7820HQ CPU, 
+running at 2.90GHz, 
+with 16 GB of RAM.
 
-### Software
+
+## Software
+
+### Data Manipulation
 
 The data manipulation was conducted using 
-a NoSQL dialect called Apache Spark implemented with PySpark. 
-Python version 3.8 is sufficient, as well as PySpark version 3.1.1.
+a NoSQL dialect called Apache Spark, 
+which is based on the functional programming language Scala
+and was implemented with PySpark in Python. 
+The Anaconda 2 distribution, version 4.3.1, 
+with 
+Python version 2.7  and PySpark version 2.3.0.
+
+The batch jobs were submitted to the computing cluster using
+batch scheduling software called SLURM. 
+
+Other resources used to run the batch jobs include:
+- sbt, version 1.3.6, which is a build tool for Scala, Java, among others
+- java, version 1.8.0_141
+
+
+### Statistical Analysis
 
 The statistical analysis was conducted in R, version 4.0.2,
 which was released on June 22, 2020, 
@@ -485,8 +690,15 @@ with the following versions:
 
 ## References
 
-- TransUnion super magic insanely big-money database
-- Census data
-- The Nilson Report, 2018 and 2019
-- top-secret regulatory returns at the Bank of Canada
+- Trade-Level Database, Run Dates 2017-01-01 to 2020-09-01, 
+  TransUnion, accessed October 2020.
+- Consumer Risk Characteristics Database, Run Dates 2017-01-01 to 2020-09-01, 
+  TransUnion, accessed October 2020.
+- Estimates of population (2016 Census and administrative data), by age group 
+  and sex for July 1st, Canada, provinces, territories, 
+    health regions (2018 boundaries) and peer groups, Table: 17-10-0134-01, 
+    Statistics Canada, accessed June 2020. 
+- The Nilson Report, April 2020, Issue 1173, HSN Consultants, Inc.
+- Chartered bank selected assets: Month-end (formerly C1), Credit cards, 
+  Bank of Canada, accessed June 2020. 
 
