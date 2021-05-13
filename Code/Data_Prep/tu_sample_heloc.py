@@ -59,7 +59,7 @@ df_ind.createOrReplaceTempView("df_ind")
 ##################################################
 
 # Identify sampled consumers
-df_cid = df_ind.select("TU_Consumer_ID").distinct().sample(withReplacement=False, fraction=0.01, seed=42)
+df_cid = df_ind.select("TU_Consumer_ID").distinct().sample(withReplacement=False, fraction=0.10, seed=42)
 
 df_cid.createOrReplaceTempView("df_cid")
 

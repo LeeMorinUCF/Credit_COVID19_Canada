@@ -2,9 +2,13 @@
 
 # DRAFT: UNDER CONSTRUCTION
 
-The code base to accompany the manuscript 
+This is the code base to accompany the manuscript 
 "Consumer Credit Usage in Canada during the Coronavirus Pandemic" 
 by Ho, Morin, Paarsch and Huynh in the Canadian Journal of Economics, 2021
+
+Any updates will be available on the GitHub code repository, 
+available at the following link: 
+[Credit_COVID19_Canada](https://github.com/LeeMorinUCF/Credit_COVID19_Canada)
 
 
 ## Data Availability
