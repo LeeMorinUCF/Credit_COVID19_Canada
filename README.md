@@ -3,7 +3,7 @@
 # DRAFT: UNDER CONSTRUCTION
 
 This is the code base to accompany the manuscript 
-"Consumer Credit Usage in Canada during the Coronavirus Pandemic" 
+*Consumer Credit Usage in Canada during the Coronavirus Pandemic* 
 by Ho, Morin, Paarsch and Huynh in the Canadian Journal of Economics, 2021
 
 Any updates will be available on the GitHub code repository, 
@@ -47,6 +47,7 @@ These procedures were performed
 on the EDITH 2.0 computing cluster
 at the Bank of Canada
 to generate the primary datasets. 
+These scripts are stored in the ```Code/Data_Prep``` folder. 
 
 1. Run the SLURM script ```df_ind_bc.slurm```, 
   which runs a sequence of Python scripts ```cr_use_bc_Y1Y2.py```, 
@@ -76,7 +77,7 @@ to generate the primary datasets.
   This dataset provides the input for
   FIGURE A1.2: Credit Data Coverage for Adults in Canada, by Province. 
 
-1. Run the SLURM script ```df_ind_heloc.slurm```, 
+1. Run the script ```df_ind_heloc.slurm```, 
   which runs a sequence of Python scripts ```cr_use_heloc_Y1Y2.py```, 
   for data covering each two-year period 20Y1-20Y2.
   It then runs ```cr_use_heloc_combine.py```, which
@@ -148,19 +149,24 @@ to generate the primary datasets.
   
 
 
-
 ## Statistical Analysis
 
 These procedures were performed on a microcomputer
 to generate the tables and figures in the paper.
+These scripts are stored in the ```Code/Stats``` folder. 
 
 ### All Files in One Script:
 
-1. Place all datasets 
-(```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
-```tu_AB_sample_bc.csv```, ```tu_AB_sample_heloc.csv```, ...
-)
-in the ```Data``` folder. 
+1. Place all datasets in the ```Data``` folder, 
+including the main datasets 
+```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
+```tu_sample_AB_bc.csv```, and ```tu_sample_AB_heloc.csv```, 
+along with the auxiliary datasets for time-series plots
+```tu_BC_time.csv```, ```tu_AB_BC_time.csv```, 
+```tu_AB_BC_time.csv```, and ```tu_AB_HE_time.csv```, 
+and for figures in the appendix
+```tu_bc_comp.csv``` and ```tu_bc_prov.csv```.
+ 
 1. Run ```COVID_CJE.sh``` in a terminal window from the ```Credit_COVID19_Canada``` folder. 
 
 
@@ -171,14 +177,11 @@ as well as the auxiliary ```R``` scripts
 ```CC_HE_time_series_figs.R```, 
 ```CC_BoC_vs_TU_comp_figs.R```
 ```CC_TU_vs_StatsCan_comp_fig.R```,
-in the ```Code``` folder, 
-which analyze the datasets that get read in from the ```Data``` folder. 
+all found in the ```Code/Stats``` folder, 
+which analyze the datasets stored in the ```Data``` folder. 
 These scripts create the tables and figures for the entire manuscript,
-by writing tex files to the ```Tables``` folder and
-eps files to the ```Figures``` folder. 
-
-It then calls the scripts...
-for the remaining figures and tables...
+by writing ```tex``` files to the ```Tables``` folder and
+```eps``` files to the ```Figures``` folder. 
 
 
 ### Generating Sets of Files Separately
@@ -229,13 +232,13 @@ with numbers for columns 4 and 5 of Tables 1 and 2
 from the ```Tables``` folder. 
 
 1. Obtain the images
-for panels (a) of Figures 4 and 5 in the eps files
+for panels (a) of Figures 4 and 5 in the ```eps``` files
 ```HE_hist_grp.eps``` and 
 ```HE_3D_probs_discrete_1.eps```
 from the ```Figures``` folder.
 
 1. Obtain the images
-for Figures 4 and 6 in the eps files
+for Figures 4 and 6 in the ```eps``` files
 ```HE_dev_pct_sample_2020_MM.eps``` and 
 ```HE_obs_vs_for_dev_pct_monthly_2020-MM.eps```
 from the ```Figures``` folder, 
@@ -326,7 +329,7 @@ It contains the following variables:
 1. ```N_he``` is the number of HELOC accounts held by a consumer.
 1. ```he_bal``` is the consumer's HELOC balance in dollars. 
 
-#### tu_AB_sample_bc.csv and tu_AB_sample_bc.csv
+#### tu_sample_AB_bc.csv and tu_sample_AB_bc.csv
 
 These datasets have the same format as for
 ```tu_sample_bc.csv``` and ```tu_sample_he.csv```, 
@@ -334,7 +337,7 @@ described above.
 
 ### Auxiliary datasets
 
-#### Time series plots
+#### Time series plots: nation-wide sample
 
 The ```Data``` folder also contains two datasets for generating 
 aggregate time-series in Figure 1. 
@@ -350,6 +353,9 @@ indicating the month in which the data were reported by the bureau.
 1. ```bal_p50``` is the median balance held by consumers during the month. 
 1. ```bal_p75``` is the upper quartile of balances held by consumers during the month. 
 
+
+#### Time series plots: Alberta sample
+
 The ```Data``` folder also contains another pair of datasets 
 for generating 
 aggregate time-series in Figure 8. 
@@ -358,6 +364,24 @@ contain time series of aggregate statistics throughout the sample,
 in an identical format, except that these were
 restricted to the province of Alberta. 
 
+#### Validation of aggregate credit-card balances
+
+A dataset of time series of aggregate outstanding credit-card balances
+is required to generate Figure A1.1. These data are stored in a file ```BoC_tot_Bal.csv```, 
+which includes the following columns.
+
+1. ```Date``` in ```DD/MM/YYYY``` format, representing the last day of each month. 
+1. ```MCP``` is a series drawn from the Webpage of the Bank of Canada, entitled
+*Chartered bank selected assets: Month-end (formerly C1), Credit cards*, 
+which records assets in the personal loan category of non-mortgage loans.
+1. ```tot_bal_all``` is the aggregate credit-card balance, in billions of Canadian dollars,
+  across all institutions represented in the TransUnion database. 
+1. ```tot_bal_bank``` is the aggregate credit-card balance, in billions of Canadian dollars,
+  across the chartered banks. 
+
+
+#### Validation of credit-card data coverage by province
+
 A dataset of aggregate counts of the number of cardholders by province 
 was compared to the population in each province in Figure A1.2. 
 This information was collected in the dataset ```CC_TU_vs_StatsCan.csv```, 
@@ -365,7 +389,7 @@ with the following columns.
 
 1. ```region``` is the two-letter abbreviation of each province in Canada.
 1. ```N_geq20_BC``` is the number of consumers aged 20 and above 
-holding accounts during the month. 
+holding accounts during the month of January 2016. 
 1. ```geq20``` is the population of each province in the age categories 20 and above, 
 which was obtained from Statstics Canada Table: 17-10-0134-01, described below.
 
@@ -607,7 +631,7 @@ They are both generated with the same script,
 one showing balances and the other showing percent changes of all the series. 
 Two of the series were created using the sample from the TransUnion database
 with the following script: 
-```NAME_OF_SCRIPT.py```
+```TU_vs_BoC_comp.py```
 
 The other series is derived from an internal database housed at the 
 Bank of Canada and collected from regulatory returns. 
@@ -618,15 +642,15 @@ Webpage of the Bank of Canada and is called
 We use the row of the table labeled "Credit cards". 
 
 Together, the aggregate time-series data are recorded 
-in the file ```BoC_vs_TU_num_accts.csv```.
-The figures are then generated with the script ```CC_BoC_vs_TU_comp_figs.R```, 
+in the file ```TU_vs_BoC_num_accts.csv```.
+The figures are then generated with the script ```CC_TU_vs_BoC_comp_figs.R```, 
 on lines 89 to 140, in particular.
 
 
 #### Figure A1.2: Credit Data Coverage for Adults in Canada, by Province
 
 The numbers in this figure were calculated with the scripts
-```NAME_OF_SCRIPT.py``` and 
+```TU_vs_StatsCan_comp.py``` and 
 ```CC_TU_vs_StatsCan_comp_fig.R``` in the Code folder. 
 It requires the dataset 
 ```CC_TU_vs_StatsCan.csv```, 

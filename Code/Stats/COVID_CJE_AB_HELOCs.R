@@ -1,6 +1,6 @@
 ##################################################
 #
-# Analysis of HELOC Balances
+# Analysis of HELOC Balances in Alberta
 #
 # Lealand Morin, Ph.D.
 # Assistant Professor
@@ -12,7 +12,7 @@
 #
 ##################################################
 #
-# COVID_CJE_HELOCs is an analysis of HELOC balances.
+# COVID_CJE_AB_HELOCs is an analysis of HELOC balances.
 #   It is part of the code base to accompany
 #   the manuscript "Consumer Credit Usage in Canada
 #   during the Coronavirus Pandemic"
@@ -20,9 +20,9 @@
 #   in the Canadian Journal of Economics, 2021
 #
 # Dependencies:
-#   Reads dataset tu_sample_heloc.csv
-#   Executes script COVID_CJE_HELOCs_prelim.R for preliminary analysis
-#   Executes script COVID_CJE_HELOCs_estim.R for estimation of main model
+#   Reads dataset tu_sample_AB_heloc.csv
+#   Executes script COVID_CJE_HELOCs_AB_prelim.R for preliminary analysis
+#   Executes script COVID_CJE_HELOCs_AB_estim.R for estimation of main model
 #   Reads discCtsDTMC.R for functions that estimate Discrete-Time Markov Chain
 #     models by discretizing continuous variables across a wide cross section.
 #
@@ -53,13 +53,18 @@ fig_dir <- 'Figures'
 tab_dir <- 'Tables'
 
 # Set file tag to differentiate from other types of loans.
-file_tag <- 'HE'
+file_tag <- 'AB_HE'
 
 # Set labels to insert text into figures and other output.
 loan_label <- 'HELOC Loan'
 loan_tag <- 'HELOC'
 
 
+# Set timing of sample and intervention.
+sample_beg <- '2013-02-01'
+sample_end <- '2014-01-01'
+intervention_beg <- '2015-01-01'
+intervention_end <- '2015-12-01'
 
 
 ##################################################
@@ -77,7 +82,7 @@ library(xtable)
 # Load Data
 ##################################################
 
-in_file_name <- sprintf('%s/tu_sample_heloc.csv', data_dir)
+in_file_name <- sprintf('%s/tu_sample_AB_heloc.csv', data_dir)
 tu <- fread(in_file_name)
 
 
@@ -92,7 +97,7 @@ tu <- fread(in_file_name)
 # discCtsDTMC.R
 #--------------------------------------------------
 
-# Data are monthly from '2017-01-01' to '2020-06-01' (42 months).
+# Data are monthly from '2012-01-01' to '2017-01-01' (61 months).
 tu[, time := as.Date(Run_Date)]
 
 
@@ -168,12 +173,18 @@ tu[, sample_sel :=
      valid_obsn]
 
 # Define sample periods.
-tu[, pre_crisis := as.numeric(time - as.Date('2020-02-01')) < 0]
+# tu[, pre_crisis := as.numeric(time - as.Date('2020-02-01')) < 0]
+tu[, pre_crisis := as.numeric(time - as.Date(sample_end)) <= 0 &
+     as.numeric(time - as.Date(sample_beg)) >= 0]
 
 
 # Fix entire pre-sample period.
 tu[, sel_obsns := sample_sel & pre_crisis]
 
+
+# label separate post_crisis dates.
+tu[, post_crisis := as.numeric(time - as.Date(intervention_beg)) >= 0 &
+     as.numeric(time - as.Date(intervention_end)) <= 0]
 
 
 #--------------------------------------------------
@@ -201,7 +212,7 @@ tu[, stmt_date := sprintf('%s, %d', stmt_month, stmt_year)]
 # Preliminary Analysis
 ##################################################
 
-src_file <- sprintf('%s/COVID_CJE_HELOCs_prelim.R', lib_dir)
+src_file <- sprintf('%s/COVID_CJE_AB_HELOCs_prelim.R', lib_dir)
 source(src_file)
 
 
@@ -209,7 +220,7 @@ source(src_file)
 # Estimation of Main Model
 ##################################################
 
-src_file <- sprintf('%s/COVID_CJE_HELOCs_estim.R', lib_dir)
+src_file <- sprintf('%s/COVID_CJE_AB_HELOCs_estim.R', lib_dir)
 source(src_file)
 
 

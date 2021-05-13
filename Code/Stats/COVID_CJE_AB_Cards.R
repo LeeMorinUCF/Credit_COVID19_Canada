@@ -1,6 +1,6 @@
 ##################################################
 #
-# Analysis of HELOC Balances
+# Analysis of Credit Card Balances in Alberta
 #
 # Lealand Morin, Ph.D.
 # Assistant Professor
@@ -12,7 +12,7 @@
 #
 ##################################################
 #
-# COVID_CJE_HELOCs is an analysis of HELOC balances.
+# COVID_CJE_AB_Cards is an analysis of credit-card balances.
 #   It is part of the code base to accompany
 #   the manuscript "Consumer Credit Usage in Canada
 #   during the Coronavirus Pandemic"
@@ -20,9 +20,9 @@
 #   in the Canadian Journal of Economics, 2021
 #
 # Dependencies:
-#   Reads dataset tu_sample_heloc.csv
-#   Executes script COVID_CJE_HELOCs_prelim.R for preliminary analysis
-#   Executes script COVID_CJE_HELOCs_estim.R for estimation of main model
+#   Reads dataset tu_sample_AB_bc.csv
+#   Executes script COVID_CJE_Cards_AB_prelim.R for preliminary analysis
+#   Executes script COVID_CJE_Cards_AB_estim.R for estimation of main model
 #   Reads discCtsDTMC.R for functions that estimate Discrete-Time Markov Chain
 #     models by discretizing continuous variables across a wide cross section.
 #
@@ -46,20 +46,24 @@ lib_dir <- 'Code/Stats'
 src_file <- sprintf('%s/discCtsDTMC.R', lib_dir)
 source(src_file)
 
-
 # Set file extension for figures.
 fig_ext <- 'eps'
 fig_dir <- 'Figures'
 tab_dir <- 'Tables'
 
 # Set file tag to differentiate from other types of loans.
-file_tag <- 'HE'
+file_tag <- 'AB_CC'
 
 # Set labels to insert text into figures and other output.
-loan_label <- 'HELOC Loan'
-loan_tag <- 'HELOC'
+loan_label <- 'Credit Card'
+loan_tag <- 'Card'
 
 
+# Set timing of sample and intervention.
+sample_beg <- '2013-02-01'
+sample_end <- '2014-01-01'
+intervention_beg <- '2015-01-01'
+intervention_end <- '2015-12-01'
 
 
 ##################################################
@@ -77,7 +81,7 @@ library(xtable)
 # Load Data
 ##################################################
 
-in_file_name <- sprintf('%s/tu_sample_heloc.csv', data_dir)
+in_file_name <- sprintf('%s/tu_sample_AB_bc.csv', data_dir)
 tu <- fread(in_file_name)
 
 
@@ -92,7 +96,7 @@ tu <- fread(in_file_name)
 # discCtsDTMC.R
 #--------------------------------------------------
 
-# Data are monthly from '2017-01-01' to '2020-06-01' (42 months).
+# Data are monthly from '2012-01-01' to '2017-01-01' (61 months).
 tu[, time := as.Date(Run_Date)]
 
 
@@ -101,7 +105,7 @@ tu[, id := tu_consumer_id]
 
 
 # Define continuous variable of interest.
-tu[, x_cts := heloc_bal]
+tu[, x_cts := bc_bal]
 
 # Need to order by TU_Consumer_ID and Run_date:
 tu <- tu[order(id, time)]
@@ -113,7 +117,7 @@ max_time <- tu[sample_sel == TRUE, max(time)]
 
 
 #--------------------------------------------------
-# Cut HELOC loan balances into categories
+# Cut Credit Card loan balances into categories
 #--------------------------------------------------
 
 # Only one atom at zero.
@@ -122,27 +126,25 @@ atom_list
 
 
 # Define breaks to assign balances into categories.
-x_breaks <- c(seq(0, 5000, by = 2500),
-              seq(10000, 20000, by = 5000),
-              seq(30000, 50000, by = 10000),
-              seq(75000, 100000, by = 25000),
-              seq(150000, 300000, by = 50000),
-              seq(400000, 800000, by = 200000))
+x_breaks <- c(seq(0, 1500, by = 250),
+              seq(2000, 6000, by = 500),
+              seq(7000, 10000, by = 1000),
+              seq(12000, 20000, by = 2000),
+              seq(25000, 30000, by = 5000),
+              seq(40000, 41000, by = 10000))
 # Define matching labels.
-x_labels <- sprintf('%.0f-%.0f', c(0, x_breaks), c(x_breaks, Inf))
+x_labels <- sprintf('%s-%s', c('0', x_breaks), c(x_breaks, '+'))
 x_labels[1] <- '0'
 x_labels[length(x_labels)] <- sprintf('%d+', x_breaks[length(x_breaks)])
-x_labels <- gsub('00000', '00K', x_labels)
 x_labels <- gsub('0000', '0K', x_labels)
 x_labels <- gsub('000', 'K', x_labels)
 x_labels <- gsub('500', '.5K', x_labels)
-x_labels <- gsub('.5KK', '500K', x_labels)
+x_labels <- gsub('1K0', '10K', x_labels)
 
 # Simpler labels for figures.
-x_labels <- c(sprintf('%s', c(x_breaks/1000)), '>800')
+x_labels <- c(sprintf('%s', c(x_breaks/1000)), '>40')
 
 num_groups <- length(x_labels)
-
 
 # Cut observations into categories.
 tu[, x_disc := cut_states(x_cts, x_breaks, x_labels)]
@@ -161,19 +163,27 @@ reshape_markov_data(dt = tu, time_unit = 'month', n_lags = 1)
 # Define Sample
 #--------------------------------------------------
 
+
 tu[, sample_sel :=
      deceased == 'N' &
-     !is.na(N_heloc) &
-     N_heloc != 0 &
+     !is.na(N_bc) &
+     N_bc != 0 &
+     !is.na(x_cts) &
      valid_obsn]
 
 # Define sample periods.
-tu[, pre_crisis := as.numeric(time - as.Date('2020-02-01')) < 0]
+# tu[, pre_crisis := as.numeric(time - as.Date('2020-02-01')) < 0]
+tu[, pre_crisis := as.numeric(time - as.Date(sample_end)) <= 0 &
+           as.numeric(time - as.Date(sample_beg)) >= 0]
 
 
 # Fix entire pre-sample period.
 tu[, sel_obsns := sample_sel & pre_crisis]
 
+
+# label separate post_crisis dates.
+tu[, post_crisis := as.numeric(time - as.Date(intervention_beg)) >= 0 &
+           as.numeric(time - as.Date(intervention_end)) <= 0]
 
 
 #--------------------------------------------------
@@ -182,7 +192,7 @@ tu[, sel_obsns := sample_sel & pre_crisis]
 
 # Create a variable for month.
 tu[, month := month(time)]
-table(tu[, month], useNA = 'ifany')
+
 
 # Create variable for statement month label (off by one).
 tu[, stmt_month := 'NA']
@@ -196,12 +206,11 @@ tu[, stmt_date := sprintf('%s, %d', stmt_month, stmt_year)]
 
 
 
-
 ##################################################
 # Preliminary Analysis
 ##################################################
 
-src_file <- sprintf('%s/COVID_CJE_HELOCs_prelim.R', lib_dir)
+src_file <- sprintf('%s/COVID_CJE_AB_Cards_prelim.R', lib_dir)
 source(src_file)
 
 
@@ -209,7 +218,7 @@ source(src_file)
 # Estimation of Main Model
 ##################################################
 
-src_file <- sprintf('%s/COVID_CJE_HELOCs_estim.R', lib_dir)
+src_file <- sprintf('%s/COVID_CJE_AB_Cards_estim.R', lib_dir)
 source(src_file)
 
 
