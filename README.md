@@ -44,100 +44,100 @@ on the EDITH 2.0 computing cluster
 at the Bank of Canada
 to generate the primary datasets. 
 
-1. Run the SLURM script df_ind_bc.slurm, 
-  which runs a sequence of Python scripts cr_use_bc_Y1Y2.py, 
+1. Run the SLURM script ```df_ind_bc.slurm```, 
+  which runs a sequence of Python scripts ```cr_use_bc_Y1Y2.py```, 
   for data covering each two-year period 20Y1-20Y2.
-  It then runs cr_use_bc_combine.py, which
-  generates a temporary parquet file df_ind.parquet. 
+  It then runs ```cr_use_bc_combine.py```, which
+  generates a temporary parquet file ```df_ind.parquet```. 
   This dataset comprises individual-level data 
   that is sufficient to run the data manipulation for 
   credit-card accounts on the nation-wide sample. 
 
-1. Run the script tu_bc.slurm, 
-  which runs the script tu_sample_bc.py
-  and generates the dataset tu_sample_bc.csv. 
+1. Run the script ```tu_sample_bc.slurm```, 
+  which runs the script ```tu_sample_bc.py```
+  and generates the dataset ```tu_sample_bc.csv```. 
   This dataset is sufficient to run the 
   analysis of credit-card accounts on the nation-wide sample. 
   
-1. Run the script tu_bc_comp.slurm, 
-  which runs the script tu_bc_comp.py
-  and generates the dataset tu_bc_comp.csv. 
+1. Run the script ```tu_bc_comp.slurm```, 
+  which runs the script ```tu_bc_comp.py```
+  and generates the dataset ```tu_bc_comp.csv```. 
   This dataset provides the input for
   Table A1: Comparison of Accounts at the Credit Agency 
   with Nation-Wide Totals in The Nilson Report. 
   
-1. Run the script tu_bc_prov.slurm, 
-  which runs the script tu_bc_prov.py
-  and generates the dataset tu_bc_prov.csv. 
+1. Run the script ```tu_bc_prov.slurm```, 
+  which runs the script ```tu_bc_prov.py```
+  and generates the dataset ```tu_bc_prov.csv```. 
   This dataset provides the input for
   FIGURE A1.2: Credit Data Coverage for Adults in Canada, by Province. 
 
-1. Run the SLURM script df_ind_bc.slurm, 
-  which runs a sequence of Python scripts cr_use_heloc_Y1Y2.py, 
+1. Run the SLURM script ```df_ind_heloc.slurm```, 
+  which runs a sequence of Python scripts ```cr_use_heloc_Y1Y2.py```, 
   for data covering each two-year period 20Y1-20Y2.
-  It then runs cr_use_heloc_combine.py, which
-  generates a temporary parquet file df_ind.parquet. 
+  It then runs ```cr_use_heloc_combine.py```, which
+  generates a temporary parquet file ```df_ind.parquet```. 
   This dataset comprises individual-level data 
   that is sufficient to run the data manipulation for 
   HELOC accounts on the nation-wide sample. 
 
-1. Run the script tu_he.slurm, 
-  which runs the script tu_sample_heloc.py
-  and generates the dataset tu_sample_heloc.csv. 
+1. Run the script ```tu_sample_heloc.slurm```, 
+  which runs the script ```tu_sample_heloc.py```
+  and generates the dataset ```tu_sample_heloc.csv```. 
   This dataset is sufficient to run the 
   analysis of HELOC accounts on the nation-wide sample. 
 
-1. Run the script tu_ind_AB_bc.slurm, 
-  which runs the script tu_ind_AB_bc.py
-  and generates a temporary parquet file df_ind.parquet. 
+1. Run the script ```tu_ind_AB_bc.slurm```, 
+  which runs the script ```tu_ind_AB_bc.py```
+  and generates a temporary parquet file ```df_ind.parquet```. 
   This dataset comprises individual-level data 
   that is sufficient to run the data manipulation for 
   credit-card accounts on the nation-wide sample. 
 
-1. Run the script tu_AB_bc.slurm, 
-  which runs the script tu_AB_sample_bc.py
-  and generates the dataset tu_AB_sample_bc.csv. 
+1. Run the script ```tu_sample_AB_bc.slurm```, 
+  which runs the script ```tu_sample_AB_bc.py```
+  and generates the dataset ```tu_sample_AB_bc.csv```. 
   This dataset is sufficient to run the 
   analysis of credit-card accounts on the Alberta sample. 
 
-1. Run the script tu_ind_AB_he.slurm, 
-  which runs the script tu_ind_AB_heloc.py
-  and generates a temporary parquet file df_ind.parquet. 
+1. Run the script ```tu_ind_AB_he.slurm```, 
+  which runs the script ```tu_ind_AB_heloc.py```
+  and generates a temporary parquet file ```df_ind.parquet```. 
   This dataset comprises individual-level data 
   that is sufficient to run the data manipulation for 
   HELOC accounts on the Alberta sample. 
 
-1. Run the script tu_AB_he.slurm, 
-  which runs the script tu_AB_sample_heloc.py
-  and generates the dataset tu_AB_sample_heloc.csv. 
+1. Run the script ```tu_sample_AB_he.slurm```, 
+  which runs the script ```tu_sample_AB_heloc.py```
+  and generates the dataset ```tu_sample_AB_heloc.csv```. 
   This dataset is sufficient to run the 
   analysis of HELOC accounts on the Alberta sample. 
   
 
-1. Run the script tu_bc_agg.slurm, 
-  which runs the script tu_agg_bc.py
-  and generates the dataset tu_BC_time.csv. 
+1. Run the script ```tu_bc_agg.slurm```, 
+  which runs the script ```tu_agg_bc.py```
+  and generates the dataset ```tu_BC_time.csv```. 
   This dataset provides the input for
   panel (a) of Figure 1: Consumers' Outstanding Balances, 2017-2020
   for credit-card accounts on the nation-wide sample. 
 
-1. Run the script tu_heloc_agg.slurm, 
-  which runs the script tu_agg_heloc.py
-  and generates the dataset tu_HE_time.csv. 
+1. Run the script ```tu_heloc_agg.slurm```, 
+  which runs the script ```tu_agg_heloc.py```
+  and generates the dataset ```tu_HE_time.csv```. 
   This dataset provides the input for
   panel (b) of Figure 1: Consumers' Outstanding Balances, 2017-2020
   for HELOC accounts on the nation-wide sample. 
 
-1. Run the script tu_AB_bc_agg.slurm, 
-  which runs the script tu_AB_agg_bc.py
-  and generates the dataset tu_AB_BC_time.csv. 
+1. Run the script ```tu_AB_bc_agg.slurm```, 
+  which runs the script ```tu_AB_agg_bc.py```
+  and generates the dataset ```tu_AB_BC_time.csv```. 
   This dataset provides the input for
   panel (a) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
   for credit-card accounts on the Alberta sample. 
 
-1. Run the script tu_AB_heloc_agg.slurm, 
-  which runs the script tu_AB_agg_he.py
-  and generates the dataset tu_AB_HE_time.csv. 
+1. Run the script ```tu_AB_heloc_agg.slurm```, 
+  which runs the script ```tu_AB_agg_he.py```
+  and generates the dataset ```tu_AB_HE_time.csv```. 
   This dataset provides the input for
   panel (b) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
   for HELOC accounts on the Alberta sample. 
@@ -153,8 +153,8 @@ to generate the tables and figures in the paper.
 ### All Files in One Script:
 
 1. Place all datasets 
-(```tu_sample_bc.csv```, ```tu_sample_he.csv```, 
-```tu_AB_sample_bc.csv```, ```tu_AB_sample_he.csv```, ...
+(```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
+```tu_AB_sample_bc.csv```, ```tu_AB_sample_heloc.csv```, ...
 )
 in the ```Data``` folder. 
 1. Run ```COVID_CJE.sh``` in a terminal window from the ```Credit_COVID19_Canada``` folder. 
@@ -286,10 +286,10 @@ see the section below
 ### Main datasets
 
 The ```Data``` folder must contain four main datasets: 
-```tu_sample_bc.csv``` and ```tu_sample_he.csv```
+```tu_sample_bc.csv``` and ```tu_sample_heloc.csv```
 for the nation-wide sample, 
 as well as
-```tu_AB_sample_bc.csv``` and ```tu_AB_sample_he.csv```
+```tu_sample_AB_bc.csv``` and ```tu_sample_AB_heloc.csv```
 for the sample restricted to the province of Alberta. 
 
 
@@ -299,15 +299,15 @@ This dataset contains observations of credit card balances
 for consumers in Canada from 2017-2021. 
 It contains the following variables:
 
-1. tu_consumer_id is a 9-digit integer that indicates an individual consumer. 
-1. Run_Date is a date variable of the form 'YYYY-MM-01' 
+1. ```tu_consumer_id``` is a 9-digit integer that indicates an individual consumer. 
+1. ```Run_Date``` is a date variable of the form ```'YYYY-MM-01'``` 
 indicating the month in which the data were reported by the bureau. 
 It is the date that represents the last information added to the files, 
 so it contains the statement activity recorded in the previous month. 
-1. prov is a string that indicates the province of residence of the consumer.
-1. homeowner is an indicator that the consumer has ever had a mortgage or a HELOC loan. 
-1. N_bc is the number of credit card accounts held by a consumer.
-1. bc_bal is the consumer's credit-card balance in dollars. 
+1. ```prov``` is a string that indicates the province of residence of the consumer.
+1. ```homeowner``` is an indicator that the consumer has ever had a mortgage or a HELOC loan. 
+1. ```N_bc``` is the number of credit card accounts held by a consumer.
+1. ```bc_bal``` is the consumer's credit-card balance in dollars. 
 
 #### tu_sample_he.csv
 
@@ -315,12 +315,12 @@ This dataset contains observations of HELOC balances
 for consumers in Canada from 2017-2021. 
 It contains the following variables:
 
-1. tu_consumer_id is 9-digit integer that indicates an individual consumer. 
-1. Run_Date is a date variable of the form 'YYYY-MM-01' indicating the month in which the data were reported by the bureau. 
-1. prov is a string that indicates the province of residence of the consumer.
-1. homeowner is an indicator that the consumer has ever had a mortgage or a HELOC loan. 
-1. N_he is the number of HELOC accounts held by a consumer.
-1. he_bal is the consumer's HELOC balance in dollars. 
+1. ```tu_consumer_id``` is 9-digit integer that indicates an individual consumer. 
+1. ```Run_Date``` is a date variable of the form ```'YYYY-MM-01'``` indicating the month in which the data were reported by the bureau. 
+1. ```prov``` is a string that indicates the province of residence of the consumer.
+1. ```homeowner``` is an indicator that the consumer has ever had a mortgage or a HELOC loan. 
+1. ```N_he``` is the number of HELOC accounts held by a consumer.
+1. ```he_bal``` is the consumer's HELOC balance in dollars. 
 
 #### tu_AB_sample_bc.csv and tu_AB_sample_bc.csv
 
@@ -338,13 +338,13 @@ The files ```tu_BC_time.csv``` and ```tu_HE_time.csv``` contain
 time series of aggregate statistics throughout the sample. 
 
 These files both contain the following variables.
-1. Run_Date is a date variable of the form 'YYYY-MM-01' 
+1. ```Run_Date``` is a date variable of the form ```'YYYY-MM-01'```, 
 indicating the month in which the data were reported by the bureau. 
-1. bal_avg is the average balance held by consumers during the month. 
-1. bal_sd is the standard deviation of balances held by consumers during the month. 
-1. bal_p25 is the lower quartile of balances held by consumers during the month. 
-1. bal_p50 is the median balance held by consumers during the month. 
-1. bal_p75 is the upper quartile of balances held by consumers during the month. 
+1. ```bal_avg``` is the average balance held by consumers during the month. 
+1. ```bal_sd``` is the standard deviation of balances held by consumers during the month. 
+1. ```bal_p25``` is the lower quartile of balances held by consumers during the month. 
+1. ```bal_p50``` is the median balance held by consumers during the month. 
+1. ```bal_p75``` is the upper quartile of balances held by consumers during the month. 
 
 The ```Data``` folder also contains another pair of datasets 
 for generating 
@@ -356,13 +356,13 @@ restricted to the province of Alberta.
 
 A dataset of aggregate counts of the number of cardholders by province 
 was compared to the population in each province in Figure A1.2. 
-This information was collected in the dataset CC_TU_vs_StatsCan.csv, 
+This information was collected in the dataset ```CC_TU_vs_StatsCan.csv```, 
 with the following columns. 
 
-1. region is the two-letter abbreviation of each province in Canada.
-1. N_geq20_BC is the number of consumers aged 20 and above 
+1. ```region``` is the two-letter abbreviation of each province in Canada.
+1. ```N_geq20_BC``` is the number of consumers aged 20 and above 
 holding accounts during the month. 
-1. geq20 is the population of each province in the age categories 20 and above, 
+1. ```geq20``` is the population of each province in the age categories 20 and above, 
 which was obtained from Statstics Canada Table: 17-10-0134-01, described below.
 
 
@@ -409,18 +409,18 @@ This Table contains information from two different modeling
 exercises: one for credit-cards and one for HELOCs. 
 
 For credit cards, 
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_estim.R. 
-Lines W to Z of COVID_CJE_Cards_estim.R 
-generate a file named CC_agg_series.eps. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```CC_agg_series.eps```. 
 
 For HELOCs, 
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_HELOCs_estim.R 
-generate a file named HE_agg_series.eps. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```HE_agg_series.eps```. 
 
-The numbers from these two tables are combined into the file Table_1.tex.
+The numbers from these two tables are combined into the file ```Table_1.tex```.
 
 #### Table 2: Divergence from l-Step-Ahead Forecasts
 
@@ -428,18 +428,18 @@ This Table also contains information from two different modeling
 exercises: one for credit-cards and one for HELOCs. 
 
 For credit cards, 
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_estim.R. 
-Lines W to Z of COVID_CJE_Cards_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```A```. 
 
 For HELOCs, 
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_HELOCs_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```A```. 
 
-The numbers from these two tables are combined into the file Table_2.tex.
+The numbers from these two tables are combined into the file ```Table_2.tex```.
 
 
 
@@ -449,23 +449,23 @@ The creation of this Table mirrors that of Table 2 on the
 Canadian population during the pandemic, 
 except that it is run on a dataset restricted to consumers 
 in the province of Alberta during the oil price shock in 2015. 
-As with Talbe 2, it also contains information from two different modeling
+As with Table 2, it also contains information from two different modeling
 exercises: one for credit-cards and one for HELOCs. 
 
 
 For credit cards, 
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_estim.R. 
-Lines W to Z of COVID_CJE_Cards_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```A```. 
 
 For HELOCs, 
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_HELOCs_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```A```. 
 
-The numbers from these two tables are combined into the file Table_2.tex.
+The numbers from these two tables are combined into the file ```Table_2.tex```.
 
 #### Table A1: Comparison of Accounts at the Credit Agency with Nation-Wide Totals in *The Nilson Report*
 
@@ -479,8 +479,8 @@ we calculated the same summary statistics
 using the sample drawn from the database. 
 
 The remaining information was obtained from running the script
-NAME_OF_SCRIPT.py, which produced the following summary dataset, 
-called NAME_OF_DATSET.csv, found in the Data folder. 
+```NAME_OF_SCRIPT.py```, which produced the following summary dataset, 
+called ```NAME_OF_DATSET.csv```, found in the Data folder. 
 
 
 
@@ -490,110 +490,110 @@ called NAME_OF_DATSET.csv, found in the Data folder.
 
 
 For credit cards, in panel (a),
-run script CC_HE_time_series_figs.R. 
-Lines 91 to 132 generate a file named CC_time_series.eps
-from the data in a file named tu_BC_time.csv. 
+run script ```CC_HE_time_series_figs.R```. 
+Lines 91 to 132 generate a file named ```CC_time_series.eps```
+from the data in a file named ```tu_BC_time.csv```. 
 
 For HELOCs, in panel (b),
-run script CC_HE_time_series_figs.R. 
-Lines 141 to 182 generate a file named HE_time_series.eps
-from the data in a file named tu_HE_time.csv. 
+run script ```CC_HE_time_series_figs.R```. 
+Lines 141 to 182 generate a file named ```HE_time_series.eps```
+from the data in a file named ```tu_HE_time.csv```. 
 
 
 #### Figure 2: Histograms of Individuals' Balances
 
 For credit cards, in panel (a),
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_prelim.R. 
-Lines W to Z of COVID_CJE_Cards_prelim.R 
-generate a file named CC_hist_grp.eps. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_prelim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_prelim.R``` 
+generate a file named ```CC_hist_grp.eps```. 
 
 For HELOCs, in panel (b),
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_prelim.R.
-Lines W to Z of COVID_CJE_HELOCs_prelim.R 
-generate a file named HE_hist_grp.eps. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_prelim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_prelim.R``` 
+generate a file named ```HE_hist_grp.eps```. 
 
 
 #### Figure 3: Conditional Histograms of Individuals' Balances
 
 For credit cards, in panel (a),
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_prelim.R. 
-Lines W to Z of COVID_CJE_Cards_prelim.R 
-generate a file named A. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_prelim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_prelim.R``` 
+generate a file named ```A```. 
 
 For HELOCs, in panel (b),
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_prelim.R.
-Lines W to Z of COVID_CJE_HELOCs_prelim.R 
-generate a file named A. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_prelim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_prelim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure 4: Deviations from Histograms (Credit Cards)
 
 For credit cards, in panel (a),
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_estim.R. 
-Lines W to Z of COVID_CJE_Cards_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure 5: Deviations from Histograms (HELOCs)
 
 For HELOCs, in panel (b),
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_HELOCs_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure 6: Deviations from Forecasted Credit-Card Balances
 
 For credit cards, in panel (a),
-run script COVID_CJE_Cards.R, 
-which then runs script COVID_CJE_Cards_estim.R. 
-Lines W to Z of COVID_CJE_Cards_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_Cards.R```, 
+which then runs script ```COVID_CJE_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure 7: Deviations from Forecasted HELOC Balances
 
 For HELOCs, in panel (b),
-run script COVID_CJE_HELOCs.R, 
-which then runs script COVID_CJE_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_HELOCs_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_HELOCs.R```, 
+which then runs script ```COVID_CJE_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
 
 
 For credit cards, in panel (a),
-run script CC_HE_time_series_figs.R. 
-Lines 226 to 267 generate a file named AB_CC_time_series.eps
-from the data in a file named tu_AB_BC_time.csv. 
+run script ```CC_HE_time_series_figs.R```. 
+Lines 226 to 267 generate a file named ```AB_CC_time_series.eps```
+from the data in a file named ```tu_AB_BC_time.csv```. 
 
 For HELOCs, in panel (b),
-run script CC_HE_time_series_figs.R. 
-Lines 276 to 317 generate a file named AB_HE_time_series.eps
-from the data in a file named tu_AB_HE_time.csv. 
+run script ```CC_HE_time_series_figs.R```. 
+Lines 276 to 317 generate a file named ```AB_HE_time_series.eps```
+from the data in a file named ```tu_AB_HE_time.csv```. 
 
 
 #### Figure 9: Deviations from Forecasted Balances in Alberta, October 2015
 
 For credit cards, in panel (a),
-run script COVID_CJE_AB_Cards.R, 
-which then runs script COVID_CJE_AB_Cards_estim.R. 
-Lines W to Z of COVID_CJE_AB_Cards_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_AB_Cards.R```, 
+which then runs script ```COVID_CJE_AB_Cards_estim.R```. 
+Lines W to Z of ```COVID_CJE_AB_Cards_estim.R``` 
+generate a file named ```A```. 
 
 
 For HELOCs, in panel (b),
-run script COVID_CJE_AB_HELOCs.R , 
-which then runs script COVID_CJE_AB_HELOCs_estim.R.
-Lines W to Z of COVID_CJE_AB_HELOCs_estim.R 
-generate a file named A. 
+run script ```COVID_CJE_AB_HELOCs.R``` , 
+which then runs script ```COVID_CJE_AB_HELOCs_estim.R```.
+Lines W to Z of ```COVID_CJE_AB_HELOCs_estim.R``` 
+generate a file named ```A```. 
 
 
 #### Figure A1.1: Time Series of Aggregate Credit-Card Balances
@@ -603,7 +603,7 @@ They are both generated with the same script,
 one showing balances and the other showing percent changes of all the series. 
 Two of the series were created using the sample from the TransUnion database
 with the following script: 
-NAME_OF_SCRIPT.py
+```NAME_OF_SCRIPT.py```
 
 The other series is derived from an internal database housed at the 
 Bank of Canada and collected from regulatory returns. 
@@ -622,10 +622,10 @@ on lines 89 to 140, in particular.
 #### Figure A1.2: Credit Data Coverage for Adults in Canada, by Province
 
 The numbers in this figure were calculated with the scripts
-NAME_OF_SCRIPT.py and 
-CC_TU_vs_StatsCan_comp_fig.R in the Code folder. 
+```NAME_OF_SCRIPT.py``` and 
+```CC_TU_vs_StatsCan_comp_fig.R``` in the Code folder. 
 It requires the dataset 
-CC_TU_vs_StatsCan.csv, 
+```CC_TU_vs_StatsCan.csv```, 
 comprising 
 the number of credit-card account holders aged 20 and above and
 the figures obtained from Statistics Canada 
@@ -635,7 +635,7 @@ in the table called
   health regions (2018 boundaries) and peer groups, *
 Table: 17-10-0134-01.
 Figure A1.2 is created by running lines 96 to 113 
-of the script CC_TU_vs_StatsCan_comp_fig.R.
+of the script ```CC_TU_vs_StatsCan_comp_fig.R```.
 
 
 
@@ -645,7 +645,7 @@ of the script CC_TU_vs_StatsCan_comp_fig.R.
 
 ### Data Manipulation
 
-The csv files in the Data folder 
+The ```csv``` files in the Data folder 
 were generated on the 
 EDITH 2.0 High Performance cluster 
 housed at the Bank of Canada. 
@@ -699,8 +699,8 @@ The batch jobs were submitted to the computing cluster using
 batch scheduling software called SLURM. 
 
 Other resources used to run the batch jobs include:
-- sbt, version 1.3.6, which is a build tool for Scala, Java, among others
-- java, version 1.8.0_141
+- ```sbt```, version 1.3.6, which is a build tool for Scala, Java, among others
+- ```java```, version 1.8.0_141
 
 
 ### Statistical Analysis
@@ -711,86 +711,86 @@ on a 64-bit Windows platform x86_64-w64-mingw32/x64.
 
 The attached packages include the following:
 
-- data.table, version 1.13.0 (using 4 threads), to handle the main data table for analysis in the _prelim.R and _estim.R scripts. 
+- ```data.table```, version 1.13.0 (using 4 threads), to handle the main data table for analysis in the _prelim.R and _estim.R scripts. 
 
-- xtable, version 1.8-4, to generate LaTeX tables for Tables 1, 2, and 3.
+- ```xtable```, version 1.8-4, to generate LaTeX tables for Tables 1, 2, and 3.
 
-- plot3D, version 1.3, to produce a 3-D bar chart of transition frequency, which created the plots in Figure 3.
+- ```plot3D```, version 1.3, to produce a 3-D bar chart of transition frequency, which created the plots in Figure 3.
 
-- MASS, version 7.3-51.6, was also used to estimate the smoothed surface of the transition density as an alternative to that in Figure 3 but was not included in the paper. 
+- ```MASS```, version 7.3-51.6, was also used to estimate the smoothed surface of the transition density as an alternative to that in Figure 3 but was not included in the paper. 
 
 The creation of other figures, including Figures A1.1 and A1.2, 
 required the following packages for data manipulation and graphics:
-- openxlsx, version 4.2.3
-- dplyr, version 1.0.5
-- lubridate, version 1.7.10
-- ggplot2, version 3.3.3
-- ggpubr, version 0.4.0
-- ggthemes, version 4.2.4
-- Cairo, version 1.5-12.2
+- ```openxlsx```, version 4.2.3
+- ```dplyr```, version 1.0.5
+- ```lubridate```, version 1.7.10
+- ```ggplot2```, version 3.3.3
+- ```ggpubr```, version 0.4.0
+- ```ggthemes```, version 4.2.4
+- ```Cairo```, version 1.5-12.2
 
 
 Upon attachment of the above packages, 
 the following packages were loaded via a namespace, but not attached,
 with the following versions:
 
-- Rcpp version 1.0.5
-- lattice version 0.20-41
-- grid version 4.0.2
-- DTMCPack version 0.1-2
-- stats4 version 4.0.2
-- magrittr version 1.5
-- RcppParallel version 5.0.2
-- misc3d version 0.8-4
-- markovchain version 0.8.5-3
-- Matrix version 1.2-18
-- tools version 4.0.2
-- igraph version 1.2.6
-- parallel version 4.0.2
-- compiler version 4.0.2
-- pkgconfig version 2.0.3
-- matlab version 1.0.2
-- nnet version 7.3-14
-- expm version 0.999-5  
-- zip version 2.1.1
-- cellranger version 1.1.0
-- pillar version 1.6.0
-- forcats version 0.5.1
-- lifecycle version 1.0.0
-- tibble version 3.1.0
-- gtable version 0.3.0
-- rlang version 0.4.10
-- curl version 4.3
-- haven version 2.3.1
-- rio version 0.5.26
-- stringr version 1.4.0
-- withr version 2.4.2       
-- hms version 1.0.0        
-- generics version 0.1.0    
-- vctrs version 0.3.7       
-- grid version 4.0.5        
-- tidyselect version 1.1.0  
-- glue version 1.4.2       
-- R6 version 2.5.0          
-- rstatix version 0.7.0     
-- fansi version 0.4.2       
-- readxl version 1.3.1      
-- foreign version 0.8-81    
-- carData version 3.0-4    
-- purrr version 0.3.4       
-- tidyr version 1.1.3       
-- car version 3.0-10        
-- scales version 1.1.1      
-- backports version 1.2.1  
-- ellipsis version 0.3.1    
-- abind version 1.4-5       
-- colorspace version 2.0-0  
-- ggsignif version 0.6.1    
-- utf8 version 1.2.1        
-- stringi version 1.5.3    
-- munsell version 0.5.0     
-- broom version 0.7.6       
-- crayon version 1.4.1
+- ```Rcpp``` version 1.0.5
+- ```lattice``` version 0.20-41
+- ```grid``` version 4.0.2
+- ```DTMCPack``` version 0.1-2
+- ```stats4``` version 4.0.2
+- ```magrittr``` version 1.5
+- ```RcppParallel``` version 5.0.2
+- ```misc3d``` version 0.8-4
+- ```markovchain``` version 0.8.5-3
+- ```Matrix``` version 1.2-18
+- ```tools``` version 4.0.2
+- ```igraph``` version 1.2.6
+- ```parallel``` version 4.0.2
+- ```compiler``` version 4.0.2
+- ```pkgconfig``` version 2.0.3
+- ```matlab``` version 1.0.2
+- ```nnet``` version 7.3-14
+- ```expm``` version 0.999-5  
+- ```zip``` version 2.1.1
+- ```cellranger``` version 1.1.0
+- ```pillar``` version 1.6.0
+- ```forcats``` version 0.5.1
+- ```lifecycle``` version 1.0.0
+- ```tibble``` version 3.1.0
+- ```gtable``` version 0.3.0
+- ```rlang``` version 0.4.10
+- ```curl``` version 4.3
+- ```haven``` version 2.3.1
+- ```rio``` version 0.5.26
+- ```stringr``` version 1.4.0
+- ```withr``` version 2.4.2       
+- ```hms``` version 1.0.0        
+- ```generics``` version 0.1.0    
+- ```vctrs``` version 0.3.7       
+- ```grid``` version 4.0.5        
+- ```tidyselect``` version 1.1.0  
+- ```glue``` version 1.4.2       
+- ```R6``` version 2.5.0          
+- ```rstatix``` version 0.7.0     
+- ```fansi``` version 0.4.2       
+- ```readxl``` version 1.3.1      
+- ```foreign``` version 0.8-81    
+- ```carData``` version 3.0-4    
+- ```purrr``` version 0.3.4       
+- ```tidyr``` version 1.1.3       
+- ```car``` version 3.0-10        
+- ```scales``` version 1.1.1      
+- ```backports``` version 1.2.1  
+- ```ellipsis``` version 0.3.1    
+- ```abind``` version 1.4-5       
+- ```colorspace``` version 2.0-0  
+- ```ggsignif``` version 0.6.1    
+- ```utf8``` version 1.2.1        
+- ```stringi``` version 1.5.3    
+- ```munsell``` version 0.5.0     
+- ```broom``` version 0.7.6       
+- ```crayon``` version 1.4.1
 
 
 ## References
