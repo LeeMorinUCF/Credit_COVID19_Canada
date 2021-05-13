@@ -64,7 +64,7 @@ fig_ext <- 'eps'
 
 
 # Credit Cards
-in_file_name <- sprintf('%s/tu_BC_time.csv', data_dir)
+in_file_name <- sprintf('%s/tu_agg_bc.csv', data_dir)
 BC_bal <- read.csv(file = in_file_name)
 
 BC_bal[, 'Run_Date'] <- as.Date(BC_bal[, 'Run_Date'])
@@ -74,7 +74,7 @@ colnames(BC_bal)
 summary(BC_bal)
 
 # HELOCs
-in_file_name <- sprintf('%s/tu_HE_time.csv', data_dir)
+in_file_name <- sprintf('%s/tu_agg_heloc.csv', data_dir)
 HE_bal <- read.csv(file = in_file_name)
 
 HE_bal[, 'Run_Date'] <- as.Date(HE_bal[, 'Run_Date'])
@@ -199,7 +199,7 @@ dev.off()
 
 
 # Credit Cards
-in_file_name <- sprintf('%s/tu_AB_BC_time.csv', data_dir)
+in_file_name <- sprintf('%s/tu_agg_AB_bc.csv', data_dir)
 BC_bal <- read.csv(file = in_file_name)
 
 BC_bal[, 'Run_Date'] <- as.Date(BC_bal[, 'Run_Date'])
@@ -209,7 +209,7 @@ colnames(BC_bal)
 summary(BC_bal)
 
 # HELOCs
-in_file_name <- sprintf('%s/tu_AB_HE_time.csv', data_dir)
+in_file_name <- sprintf('%s/tu_agg_AB_heloc.csv', data_dir)
 HE_bal <- read.csv(file = in_file_name)
 
 HE_bal[, 'Run_Date'] <- as.Date(HE_bal[, 'Run_Date'])
