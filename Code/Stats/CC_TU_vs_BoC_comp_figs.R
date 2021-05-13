@@ -65,8 +65,8 @@ data_dir <- 'Data'
 # Set file extension for figures.
 fig_ext <- 'eps'
 
-in_file_name <- sprintf('%s/BoC_vs_TU_num_accts.csv', data_dir)
-out_file_name <- sprintf('%s/BoC_vs_TU_comparison.%s', data_dir, fig_ext)
+in_file_name <- sprintf('%s/TU_vs_BoC_num_accts.csv', data_dir)
+out_file_name <- sprintf('%s/TU_vs_BoC_comparison.%s', data_dir, fig_ext)
 
 
 ##################################################
@@ -74,7 +74,7 @@ out_file_name <- sprintf('%s/BoC_vs_TU_comparison.%s', data_dir, fig_ext)
 ##################################################
 
 
-comp <- read.csv(file = "BoC_vs_TU_num_accts.csv") %>% 
+comp <- read.csv(file = in_file_name) %>% 
   mutate(Date = as.Date(Date, format="%Y-%m-%d")) %>% arrange(Date) %>%
   mutate(MCP_yoy = MCP/lag(MCP, n = 1) -1,
          TU_all_yoy = tot_bal_all/lag(tot_bal_all, n = 1) -1,
