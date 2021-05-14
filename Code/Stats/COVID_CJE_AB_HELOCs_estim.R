@@ -438,12 +438,10 @@ tex_file_name <- sprintf('%s/%s', out_dir, tex_file_name)
 cat(print(out_xtable), file = tex_file_name, append = FALSE)
 
 
-
 #--------------------------------------------------
 # Plots in terms of percentage deviations:
 # Model with fixed transition matrix
 #--------------------------------------------------
-
 
 # Plot in terms of percentage deviations.
 for (date_num in 1:length(forecast_date_list)) {
@@ -479,6 +477,7 @@ for (date_num in 1:length(forecast_date_list)) {
 # Plots in terms of percentage deviations:
 # Model with monthly transition matrix
 #--------------------------------------------------
+
 
 # Plot in terms of percentage deviations.
 for (date_num in 1:length(forecast_date_list)) {

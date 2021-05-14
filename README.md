@@ -39,6 +39,10 @@ All research is vetted by Bank of Canada senior staff prior to publication.
 
 # Instructions:
 
+The workflow proceeds in two stages: 
+one set of instructions outlines the operations to transform the raw data in the 
+TransUnion database into the datasets that are the inputs for the statistical analysis
+in the next stage. 
 
 
 ## Data Manipulation
@@ -148,144 +152,11 @@ These scripts are stored in the ```Code/Data_Prep``` folder.
   
 
 
-## Statistical Analysis
-
-These procedures were performed on a microcomputer
-to generate the tables and figures in the paper.
-These scripts are stored in the ```Code/Stats``` folder. 
-
-### All Files in One Script:
-
-1. Place all datasets in the ```Data``` folder, 
-including the main datasets 
-```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
-```tu_sample_AB_bc.csv```, and ```tu_sample_AB_heloc.csv```, 
-along with the auxiliary datasets for time-series plots
-```tu_agg_bc.csv```, ```tu_agg_heloc.csv```, 
-```tu_agg_AB_bc.csv```, and ```tu_agg_AB_heloc.csv```, 
-and for figures in the appendix
-```TU_vs_BoC_num_accts.csv``` and ```CC_TU_vs_StatsCan.csv```.
- 
-1. Run ```COVID_CJE.sh``` in a terminal window from the ```Credit_COVID19_Canada``` folder. 
-
-
-This shell script calls the main ```R``` programs 
-```COVID_CJE_Cards.R```, ```COVID_CJE_HELOCs.R``` 
-```COVID_CJE_AB_Cards.R```, ```COVID_CJE_AB_HELOCs.R``` 
-as well as the auxiliary ```R``` scripts 
-```CC_HE_time_series_figs.R```, 
-```CC_BoC_vs_TU_comp_figs.R```
-```CC_TU_vs_StatsCan_comp_fig.R```,
-all found in the ```Code/Stats``` folder, 
-which analyze the datasets stored in the ```Data``` folder. 
-These scripts create the tables and figures for the entire manuscript,
-by writing ```tex``` files to the ```Tables``` folder and
-```eps``` files to the ```Figures``` folder. 
-
-
-### Generating Sets of Files Separately
-
-#### Nation-Wide Sample of Credit-Card Accounts
-
-1. Place the dataset 
-```tu_sample_bc.csv```
-in the ```Data``` folder. 
-1. Run ```Rscript COVID_CJE_Cards.R``` 
-in a terminal window from the ```Credit_COVID19_Canada``` folder. 
-
-
-1. Obtain the ```tex``` files 
-```CC_KLD_kstep_monthly_01.tex``` and
-```CC_KLD_vs_sample_01.tex``` 
-with numbers for columns 2 and 3 of Tables 1 and 2 
-from the ```Tables``` folder. 
-
-1. Obtain the images
-for panels (a) of Figures 2 and 3 in the eps files
-```CC_hist_grp.eps``` and 
-```CC_3D_probs_discrete_1.eps```
-from the ```Figures``` folder.
-
-1. Obtain the images
-for Figures 4 and 6 in the eps files
-```CC_dev_pct_sample_2020_MM.eps``` and 
-```CC_obs_vs_for_dev_pct_monthly_2020-MM.eps```
-from the ```Figures``` folder, 
-where ```MM``` represents the two-digit month of the 
-```Run_date``` after the close of the corresponding statement month. 
-
-
-#### Nation-Wide Sample of HELOC Accounts
-
-1. Place the dataset
-```tu_sample_heloc.csv```
-in the ```Data``` folder. 
-1. Run ```Rscript COVID_CJE_HELOCs.R``` 
-in a terminal window from the ```Credit_COVID19_Canada``` folder. 
-
-
-1. Obtain the tex files 
-```HE_KLD_kstep_monthly_01.tex``` and
-```HE_KLD_vs_sample_01.tex``` 
-with numbers for columns 4 and 5 of Tables 1 and 2 
-from the ```Tables``` folder. 
-
-1. Obtain the images
-for panels (b) of Figures 4 and 5 in the ```eps``` files
-```HE_hist_grp.eps``` and 
-```HE_3D_probs_discrete_1.eps```
-from the ```Figures``` folder.
-
-1. Obtain the images
-for Figures 5 and 7 in the ```eps``` files
-```HE_dev_pct_sample_2020_MM.eps``` and 
-```HE_obs_vs_for_dev_pct_monthly_2020-MM.eps```
-from the ```Figures``` folder, 
-where ```MM``` represents the two-digit month of the 
-```Run_date``` after the close of the corresponding statement month. 
-
-
-
-#### Alberta Sample of Credit-Card Accounts
-
-1. Place the dataset 
-```tu_sample_AB_bc.csv```
-in the ```Data``` folder. 
-1. Run ```Rscript COVID_CJE_AB_Cards.R``` 
-in a terminal window from the ```Credit_COVID19_Canada``` folder. 
-1. Obtain the tex file ```AB_CC_KLD_kstep_monthly_01.tex``` 
-with numbers for columns 2 and 3 for Table 3 
-in the ```Tables``` folder
-and panel (a) of Figure 9 in the file
-```AB_CC_obs_vs_for_dev_pct_monthly_2015-11.eps```
-in the ```Figures``` folder.
-
-
-#### Alberta Sample of HELOC Accounts
-
-1. Place the dataset 
-```tu_sample_AB_heloc.csv```
-in the ```Data``` folder. 
-1. Run ```Rscript COVID_CJE_AB_HELOCs.R``` 
-in a terminal window from the ```Credit_COVID19_Canada``` folder. 
-1. Obtain the tex file ```AB_HE_KLD_kstep_monthly_01.tex```
-with numbers for columns 4 and 5 for Table 3 
-in the ```Tables``` folder
-and panel (b) of Figure 9 in the file
-```AB_HE_obs_vs_for_dev_pct_monthly_2015-11.eps```
-in the ```Figures``` folder.
-
-
-
-#### Auxilliary Tables and Figures
-
-For instructions for generating the remaining tables and figures, 
-see the section below
-"Generating Tables and Figures Individually".
-
-
-
 ## Datasets
+
+
+The above operations will produce the following datasets in ```csv``` format. 
+
 
 ### Main datasets
 
@@ -325,6 +196,7 @@ It contains the following variables:
 1. ```homeowner``` is an indicator that the consumer has ever had a mortgage or a HELOC loan. 
 1. ```N_he``` is the number of HELOC accounts held by a consumer.
 1. ```he_bal``` is the consumer's HELOC balance in dollars. 
+
 
 #### tu_sample_AB_bc.csv and tu_sample_AB_bc.csv
 
@@ -410,22 +282,146 @@ These include:
     Statistics Canada, accessed June 2020. 
 
 
-#### Delete this section, after placing below:
 
-1. Place datasets 
-```A.csv``` and ```B.csv```
+These data sources are used in the statistical analysis that follows. 
+
+
+
+## Statistical Analysis
+
+These procedures were performed on a microcomputer
+to generate the tables and figures in the paper.
+These scripts are stored in the ```Code/Stats``` folder. 
+
+### All Files in One Script:
+
+1. Place all datasets in the ```Data``` folder, 
+including the main datasets 
+```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
+```tu_sample_AB_bc.csv```, and ```tu_sample_AB_heloc.csv```, 
+along with the auxiliary datasets for time-series plots
+```tu_agg_bc.csv```, ```tu_agg_heloc.csv```, 
+```tu_agg_AB_bc.csv```, and ```tu_agg_AB_heloc.csv```, 
+and for figures in the appendix
+```TU_vs_BoC_num_accts.csv``` and ```CC_TU_vs_StatsCan.csv```.
+ 
+1. Run ```COVID_CJE.sh``` in a terminal window from the ```Credit_COVID19_Canada``` folder. 
+
+
+This shell script calls the main ```R``` programs 
+```COVID_CJE_Cards.R```, ```COVID_CJE_HELOCs.R``` 
+```COVID_CJE_AB_Cards.R```, ```COVID_CJE_AB_HELOCs.R``` 
+as well as the auxiliary ```R``` scripts 
+```CC_HE_time_series_figs.R```, 
+```CC_BoC_vs_TU_comp_figs.R```
+```CC_TU_vs_StatsCan_comp_fig.R```,
+all found in the ```Code/Stats``` folder, 
+which analyze the datasets stored in the ```Data``` folder. 
+These scripts create the tables and figures for the entire manuscript,
+by writing ```tex``` files to the ```Tables``` folder and
+```eps``` files to the ```Figures``` folder. 
+
+
+### Generating Sets of Files Separately
+
+#### Nation-Wide Sample of Credit-Card Accounts
+
+1. Place the dataset 
+```tu_sample_bc.csv```
 in the ```Data``` folder. 
-1. Run the following auxiliary scripts, in any order, 
-to obtain Figures 1, 8, A1.1 and A1.2, 
-as well as Table A1, 
-which will also be saved in either the ```Figures``` or ```Tables``` folder, according to the type of file.
-  a. Run script X to generate eps files 
-  CC_agg_series.eps and HE_agg_series.eps for Figure 1.
-  a. Run script X to generate eps files 
-  AB_CC_agg_series.eps and AB_HE_agg_series.eps for Figure 8.
-  a. Run script X to generate eps file Y for Figure A1.1.
-  a. Run script X to generate csv file Y for Table A1.
-  a. Run script X to generate eps file Y for Figure A1.2.
+1. Run ```Rscript COVID_CJE_Cards.R``` 
+in a terminal window from the ```Credit_COVID19_Canada``` folder. 
+
+
+1. Obtain the ```tex``` files 
+```CC_KLD_vs_sample_01.tex``` and 
+```CC_KLD_kstep_fixed_vs_monthly_02.tex```
+with numbers for columns 2 and 3 of Tables 1 and 2 
+from the ```Tables``` folder. 
+
+1. Obtain the images
+for panels (a) of Figures 2 and 3 in the ```eps``` files
+```CC_hist_grp.eps``` and 
+```CC_3D_probs_discrete_1.eps```
+from the ```Figures``` folder.
+
+1. Obtain the images
+for Figures 4 and 6 in the ```eps``` files
+```CC_sample_dev_pct_2020_MM.eps``` and 
+```CC_obs_vs_for_dev_pct_monthly_2020-MM.eps```
+from the ```Figures``` folder, 
+where ```MM``` represents the two-digit month of the 
+```Run_date``` after the close of the corresponding statement month. 
+
+
+#### Nation-Wide Sample of HELOC Accounts
+
+1. Place the dataset
+```tu_sample_heloc.csv```
+in the ```Data``` folder. 
+1. Run ```Rscript COVID_CJE_HELOCs.R``` 
+in a terminal window from the ```Credit_COVID19_Canada``` folder. 
+
+
+1. Obtain the ```tex``` files 
+```HE_KLD_vs_sample_01.tex``` and 
+```HE_KLD_kstep_fixed_vs_monthly_02.tex```
+with numbers for columns 4 and 5 of Tables 1 and 2 
+from the ```Tables``` folder. 
+
+1. Obtain the images
+for panels (b) of Figures 4 and 5 in the ```eps``` files
+```HE_hist_grp.eps``` and 
+```HE_3D_probs_discrete_1.eps```
+from the ```Figures``` folder.
+
+1. Obtain the images
+for Figures 5 and 7 in the ```eps``` files
+```HE_sample_dev_pct_2020_MM.eps``` and 
+```HE_obs_vs_for_dev_pct_monthly_2020-MM.eps```
+from the ```Figures``` folder, 
+where ```MM``` represents the two-digit month of the 
+```Run_date``` after the close of the corresponding statement month. 
+
+
+
+#### Alberta Sample of Credit-Card Accounts
+
+1. Place the dataset 
+```tu_sample_AB_bc.csv```
+in the ```Data``` folder. 
+1. Run ```Rscript COVID_CJE_AB_Cards.R``` 
+in a terminal window from the ```Credit_COVID19_Canada``` folder. 
+1. Obtain the ```tex``` file ```AB_CC_KLD_kstep_fixed_vs_monthly_02.tex``` 
+with numbers for columns 2 and 3 for Table 3 
+in the ```Tables``` folder
+and panel (a) of Figure 9 in the file
+```AB_CC_obs_vs_for_dev_pct_monthly_2015-11.eps```
+in the ```Figures``` folder.
+
+
+#### Alberta Sample of HELOC Accounts
+
+1. Place the dataset 
+```tu_sample_AB_heloc.csv```
+in the ```Data``` folder. 
+1. Run ```Rscript COVID_CJE_AB_HELOCs.R``` 
+in a terminal window from the ```Credit_COVID19_Canada``` folder. 
+1. Obtain the ```tex``` file ```AB_HE_KLD_kstep_fixed_vs_monthly_02.tex```
+with numbers for columns 4 and 5 for Table 3 
+in the ```Tables``` folder
+and panel (b) of Figure 9 in the file
+```AB_HE_obs_vs_for_dev_pct_monthly_2015-11.eps```
+in the ```Figures``` folder.
+
+
+#### Auxilliary Tables and Figures
+
+Instructions for generating the remaining tables and figures
+are outlined in the next section
+"Generating Tables and Figures Individually".
+
+
   
 
 ## Generating Tables and Figures Individually
@@ -440,14 +436,14 @@ exercises: one for credit-cards and one for HELOCs.
 For credit cards, 
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
-generate a file named ```CC_agg_series.eps```. 
+Lines 118 to 199 of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```CC_KLD_vs_sample_01.tex```. 
 
 For HELOCs, 
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
-generate a file named ```HE_agg_series.eps```. 
+Lines 118 to 199 of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```HE_KLD_vs_sample_01.tex```. 
 
 The numbers from these two tables are combined into the file ```Table_1.tex```.
 
@@ -459,16 +455,19 @@ exercises: one for credit-cards and one for HELOCs.
 For credit cards, 
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
-generate a file named ```A```. 
+Lines 363 to 433 of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```CC_KLD_kstep_fixed_vs_monthly_02.tex```. 
+The columns under the 
 
 For HELOCs, 
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
-generate a file named ```A```. 
+Lines 363 to 433 of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```HE_KLD_kstep_fixed_vs_monthly_02.tex```. 
 
-The numbers from these two tables are combined into the file ```Table_2.tex```.
+The numbers from these two tables 
+corresponding to the model with monthly transition matrices 
+are combined into the file ```Table_2.tex```.
 
 
 
@@ -484,17 +483,20 @@ exercises: one for credit-cards and one for HELOCs.
 
 For credit cards, 
 run script ```COVID_CJE_Cards.R```, 
-which then runs script ```COVID_CJE_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
-generate a file named ```A```. 
+which then runs script ```COVID_CJE_AB_Cards_estim.R```. 
+Lines 366 to 436 of ```COVID_CJE_AB_Cards_estim.R``` 
+generate a file named ```AB_CC_KLD_kstep_fixed_vs_monthly_02.tex```. 
 
 For HELOCs, 
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_estim.R```.
 Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
-generate a file named ```A```. 
+generate a file named ```AB_HE_KLD_kstep_fixed_vs_monthly_02.tex```. 
 
-The numbers from these two tables are combined into the file ```Table_2.tex```.
+The numbers from these two tables 
+corresponding to the model with monthly transition matrices 
+are combined into the file ```Table_2.tex```.
+
 
 #### Table A1: Comparison of Accounts at the Credit Agency with Nation-Wide Totals in *The Nilson Report*
 
@@ -506,10 +508,9 @@ and are available [here](https://nilsonreport.com/publication_newsletter_archive
 To compare with the contents of the TransUnion database, 
 we calculated the same summary statistics 
 using the sample drawn from the database. 
-
 The remaining information was obtained from running the script
-```TU_vs_Nilson_comp.py```, which produced the following summary dataset, 
-called ```TU_vs_BoC_num_accts.csv```, found in the Data folder. 
+```TU_vs_Nilson_comp.py```, which produced the summary dataset 
+called ```TU_vs_BoC_num_accts.csv```, found in the ```Data``` folder. 
 
 
 
@@ -521,12 +522,12 @@ called ```TU_vs_BoC_num_accts.csv```, found in the Data folder.
 For credit cards, in panel (a),
 run script ```CC_HE_time_series_figs.R```. 
 Lines 91 to 132 generate a file named ```CC_time_series.eps```
-from the data in a file named ```tu_BC_time.csv```. 
+from the data in a file named ```tu_agg_bc.csv```. 
 
 For HELOCs, in panel (b),
 run script ```CC_HE_time_series_figs.R```. 
 Lines 141 to 182 generate a file named ```HE_time_series.eps```
-from the data in a file named ```tu_HE_time.csv```. 
+from the data in a file named ```tu_agg_heloc.csv```. 
 
 
 #### Figure 2: Histograms of Individuals' Balances
@@ -534,14 +535,14 @@ from the data in a file named ```tu_HE_time.csv```.
 For credit cards, in panel (a),
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_prelim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_prelim.R``` 
-generate a file named ```CC_hist_grp.eps```. 
+Lines 53 to 71 of ```COVID_CJE_Cards_prelim.R``` 
+generate a file named ```CC_hist_grp_sample.eps```. 
 
 For HELOCs, in panel (b),
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_prelim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_prelim.R``` 
-generate a file named ```HE_hist_grp.eps```. 
+Lines 53 to 71 of ```COVID_CJE_HELOCs_prelim.R``` 
+generate a file named ```HE_hist_grp_sample.eps```. 
 
 
 #### Figure 3: Conditional Histograms of Individuals' Balances
@@ -549,14 +550,14 @@ generate a file named ```HE_hist_grp.eps```.
 For credit cards, in panel (a),
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_prelim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_prelim.R``` 
-generate a file named ```A```. 
+Lines 94 to 177 of ```COVID_CJE_Cards_prelim.R``` 
+generate a file named ```CC_3D_probs_discrete_1.eps```. 
 
 For HELOCs, in panel (b),
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_prelim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_prelim.R``` 
-generate a file named ```A```. 
+Lines 94 to 177 of ```COVID_CJE_HELOCs_prelim.R``` 
+generate a file named ```HE_3D_probs_discrete_1.eps```. 
 
 
 #### Figure 4: Deviations from Histograms (Credit Cards)
@@ -564,8 +565,8 @@ generate a file named ```A```.
 For credit cards, in panel (a),
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
-generate a file named ```A```. 
+Lines 36 to 114 of ```COVID_CJE_Cards_estim.R``` 
+generate a set of files named ```CC_sample_dev_pct_2020_MM.eps```. 
 
 
 #### Figure 5: Deviations from Histograms (HELOCs)
@@ -573,8 +574,8 @@ generate a file named ```A```.
 For HELOCs, in panel (b),
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
-generate a file named ```A```. 
+Lines 36 to 114 of ```COVID_CJE_HELOCs_estim.R``` 
+generate a set of files named ```HE_sample_dev_pct_2020_MM.eps```. 
 
 
 #### Figure 6: Deviations from Forecasted Credit-Card Balances
@@ -582,8 +583,8 @@ generate a file named ```A```.
 For credit cards, in panel (a),
 run script ```COVID_CJE_Cards.R```, 
 which then runs script ```COVID_CJE_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_Cards_estim.R``` 
-generate a file named ```A```. 
+Lines 473 to 506 of ```COVID_CJE_Cards_estim.R``` 
+generate a file named ```CC_obs_vs_for_dev_pct_monthly_2020_MM.eps```. 
 
 
 #### Figure 7: Deviations from Forecasted HELOC Balances
@@ -591,8 +592,8 @@ generate a file named ```A```.
 For HELOCs, in panel (b),
 run script ```COVID_CJE_HELOCs.R```, 
 which then runs script ```COVID_CJE_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
-generate a file named ```A```. 
+Lines 473 to 506 of ```COVID_CJE_HELOCs_estim.R``` 
+generate a file named ```HE_obs_vs_for_dev_pct_monthly_2020_MM.eps```. 
 
 
 #### Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
@@ -601,12 +602,12 @@ generate a file named ```A```.
 For credit cards, in panel (a),
 run script ```CC_HE_time_series_figs.R```. 
 Lines 226 to 267 generate a file named ```AB_CC_time_series.eps```
-from the data in a file named ```tu_AB_BC_time.csv```. 
+from the data in a file named ```tu_agg_AB_bc.csv```. 
 
 For HELOCs, in panel (b),
 run script ```CC_HE_time_series_figs.R```. 
 Lines 276 to 317 generate a file named ```AB_HE_time_series.eps```
-from the data in a file named ```tu_AB_HE_time.csv```. 
+from the data in a file named ```tu_agg_AB_heloc.csv```. 
 
 
 #### Figure 9: Deviations from Forecasted Balances in Alberta, October 2015
@@ -614,15 +615,15 @@ from the data in a file named ```tu_AB_HE_time.csv```.
 For credit cards, in panel (a),
 run script ```COVID_CJE_AB_Cards.R```, 
 which then runs script ```COVID_CJE_AB_Cards_estim.R```. 
-Lines W to Z of ```COVID_CJE_AB_Cards_estim.R``` 
-generate a file named ```A```. 
+Lines 476 to 509 of ```COVID_CJE_AB_Cards_estim.R``` 
+generate a file named ```AB_CC_obs_vs_for_dev_pct_monthly_2015-11.eps```. 
 
 
 For HELOCs, in panel (b),
 run script ```COVID_CJE_AB_HELOCs.R``` , 
 which then runs script ```COVID_CJE_AB_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_AB_HELOCs_estim.R``` 
-generate a file named ```A```. 
+Lines 476 to 509 of ```COVID_CJE_AB_HELOCs_estim.R``` 
+generate a file named ```AB_HE_obs_vs_for_dev_pct_monthly_2015-11.eps```. 
 
 
 #### Figure A1.1: Time Series of Aggregate Credit-Card Balances
@@ -630,7 +631,8 @@ generate a file named ```A```.
 There are two panels in this figure. 
 They are both generated with the same script, 
 one showing balances and the other showing percent changes of all the series. 
-Two of the series were created using the sample from the TransUnion database
+Two of the series were created using the 
+sample from the TransUnion database
 with the following script: 
 ```TU_vs_BoC_comp.py```
 
@@ -643,9 +645,11 @@ Webpage of the Bank of Canada and is called
 We use the row of the table labeled "Credit cards". 
 
 Together, the aggregate time-series data are recorded 
-in the file ```TU_vs_BoC_num_accts.csv```.
-The figures are then generated with the script ```CC_TU_vs_BoC_comp_figs.R```, 
-on lines 89 to 140, in particular.
+in the file ```TU_vs_BoC_totals.csv```.
+The figures 
+in the file ```TU_vs_BoC_comparison.eps```
+are then generated with the script ```CC_TU_vs_BoC_comp_figs.R```, 
+on lines 89 to 140.
 
 
 #### Figure A1.2: Credit Data Coverage for Adults in Canada, by Province
@@ -663,6 +667,7 @@ in the table called
   and sex for July 1st, Canada, provinces, territories, 
   health regions (2018 boundaries) and peer groups, *
 Table: 17-10-0134-01.
+The file ```CC_TU_vs_StatsCan_comp.eps``` for 
 Figure A1.2 is created by running lines 96 to 113 
 of the script ```CC_TU_vs_StatsCan_comp_fig.R```.
 
@@ -696,7 +701,7 @@ to create the datasets within at most 24 hours each.
 
 ### Statistical Analysis
 
-Once the datasets have been saved in the Data folder, 
+Once the datasets have been saved in the ```Data``` folder, 
 the remaining analysis, including the generation of all the tables
 and figures in the paper can be performed on a single microcomputer, 
 such as a laptop computer.

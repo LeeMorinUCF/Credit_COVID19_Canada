@@ -97,7 +97,7 @@ for (date_num in 1:length(post_crisis_dates)) {
   dev_pct_tab <- log(hist_2020_month/hist_sample_month) *100
 
 
-  fig_file_name <- sprintf('%s_dev_pct_%s_vs_sample.%s',
+  fig_file_name <- sprintf('%s_sample_dev_pct_%s.%s',
                            file_tag, substr(sel_date, 1, 7), fig_ext)
   out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 

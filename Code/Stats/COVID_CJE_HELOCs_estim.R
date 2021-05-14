@@ -97,7 +97,7 @@ for (date_num in 1:length(post_crisis_dates)) {
   dev_pct_tab <- log(hist_2020_month/hist_sample_month) *100
 
 
-  fig_file_name <- sprintf('%s_dev_pct_%s_vs_sample.%s',
+  fig_file_name <- sprintf('%s_sample_dev_pct_%s.%s',
                            file_tag, substr(sel_date, 1, 7), fig_ext)
   out_file_name <- sprintf('%s/%s', fig_dir, fig_file_name)
 
@@ -112,8 +112,6 @@ for (date_num in 1:length(post_crisis_dates)) {
   dev.off()
 
 }
-
-
 
 
 
@@ -195,6 +193,7 @@ out_xtable <- xtable(out_table, digits = 4, label = sprintf('tab:%s_KLD_sample',
 
 tex_file_name <- sprintf('%s_KLD_vs_sample_01.tex', file_tag)
 tex_file_name <- sprintf('%s/%s', out_dir, tex_file_name)
+
 
 # Print table to tex file.
 cat(print(out_xtable), file = tex_file_name, append = FALSE)
@@ -355,10 +354,6 @@ cat(print(out_xtable), file = tex_file_name, append = FALSE)
 
 
 
-
-
-
-
 ##################################################
 # Analysis of Forecasts
 ##################################################
@@ -371,6 +366,8 @@ cat(print(out_xtable), file = tex_file_name, append = FALSE)
 # Measures changes from predictions out-of-sample.
 # Output table of test statistics
 #--------------------------------------------------
+
+
 
 # Start from February 2020
 forecast_date_list <- post_crisis_dates
@@ -408,6 +405,7 @@ KLD_forecast_test_orig <- KLD_forecast_test(forecast_probs_orig,
 # Conduct tests with monthly transition matrix.
 KLD_forecast_test_mo <- KLD_forecast_test(forecast_probs_mo,
                                           observed_probs, num_obs = num_obs_forecast)
+
 
 
 
@@ -477,10 +475,11 @@ for (date_num in 1:length(forecast_date_list)) {
 # Model with monthly transition matrix
 #--------------------------------------------------
 
+
 # Plot in terms of percentage deviations.
 for (date_num in 1:length(forecast_date_list)) {
 
-
+  
   sel_date <- forecast_date_list[date_num]
   dev_pct_tab <- log(observed_probs[sel_date, ] /
                        forecast_probs_mo[sel_date, ]) *100

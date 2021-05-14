@@ -173,7 +173,6 @@ for (theta_num in 1:length(theta_list)) {
 
 }
 
-
 # Reset the size of margins.
 par(mar = c(5.1, 4.1, 4.1, 2.1))
 
