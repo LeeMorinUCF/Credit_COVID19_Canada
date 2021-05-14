@@ -1,6 +1,5 @@
 # Credit_COVID19_Canada
 
-# DRAFT: UNDER CONSTRUCTION
 
 This is the code base to accompany the manuscript 
 *Consumer Credit Usage in Canada during the Coronavirus Pandemic* 
@@ -240,7 +239,7 @@ restricted to the province of Alberta.
 
 A dataset of time series of aggregate outstanding credit-card balances
 is required to generate Figure A1.1. 
-These data are stored in a file ```BoC_tot_Bal.csv```, 
+These data are stored in a file ```TU_vs_BoC_totals.csv```, 
 which includes the following columns.
 
 1. ```Date``` in ```DD/MM/YYYY``` format, representing the last day of each month. 
@@ -313,7 +312,7 @@ This shell script calls the main ```R``` programs
 ```COVID_CJE_AB_Cards.R```, ```COVID_CJE_AB_HELOCs.R``` 
 as well as the auxiliary ```R``` scripts 
 ```CC_HE_time_series_figs.R```, 
-```CC_BoC_vs_TU_comp_figs.R```
+```CC_BoC_vs_TU_comp_figs.R```, and 
 ```CC_TU_vs_StatsCan_comp_fig.R```,
 all found in the ```Code/Stats``` folder, 
 which analyze the datasets stored in the ```Data``` folder. 
@@ -370,7 +369,7 @@ with numbers for columns 4 and 5 of Tables 1 and 2
 from the ```Tables``` folder. 
 
 1. Obtain the images
-for panels (b) of Figures 4 and 5 in the ```eps``` files
+for panels (b) of Figures 2 and 3 in the ```eps``` files
 ```HE_hist_grp.eps``` and 
 ```HE_3D_probs_discrete_1.eps```
 from the ```Figures``` folder.
@@ -419,12 +418,12 @@ in the ```Figures``` folder.
 
 Instructions for generating the remaining tables and figures
 are outlined in the next section
-"Generating Tables and Figures Individually".
+"Generating Tables and Figures Separately".
 
 
   
 
-## Generating Tables and Figures Individually
+## Generating Tables and Figures Separately
 
 ### Tables
 
@@ -489,13 +488,13 @@ generate a file named ```AB_CC_KLD_kstep_fixed_vs_monthly_02.tex```.
 
 For HELOCs, 
 run script ```COVID_CJE_HELOCs.R```, 
-which then runs script ```COVID_CJE_HELOCs_estim.R```.
-Lines W to Z of ```COVID_CJE_HELOCs_estim.R``` 
+which then runs script ```COVID_CJE_AB_HELOCs_estim.R```.
+Lines 366 to 436 of ```COVID_CJE_AB_HELOCs_estim.R``` 
 generate a file named ```AB_HE_KLD_kstep_fixed_vs_monthly_02.tex```. 
 
 The numbers from these two tables 
 corresponding to the model with monthly transition matrices 
-are combined into the file ```Table_2.tex```.
+are combined into the file ```Table_3.tex```.
 
 
 #### Table A1: Comparison of Accounts at the Credit Agency with Nation-Wide Totals in *The Nilson Report*
@@ -628,8 +627,7 @@ generate a file named ```AB_HE_obs_vs_for_dev_pct_monthly_2015-11.eps```.
 
 #### Figure A1.1: Time Series of Aggregate Credit-Card Balances
 
-There are two panels in this figure. 
-They are both generated with the same script, 
+The two panels, which are both generated with the same script, 
 one showing balances and the other showing percent changes of all the series. 
 Two of the series were created using the 
 sample from the TransUnion database
@@ -745,7 +743,7 @@ on a 64-bit Windows platform x86_64-w64-mingw32/x64.
 
 The attached packages include the following:
 
-- ```data.table```, version 1.13.0 (using 4 threads), to handle the main data table for analysis in the _prelim.R and _estim.R scripts. 
+- ```data.table```, version 1.13.0 (using 4 threads), to handle the main data table for analysis in the ```_prelim.R``` and ```_estim.R``` scripts. 
 
 - ```xtable```, version 1.8-4, to generate LaTeX tables for Tables 1, 2, and 3.
 

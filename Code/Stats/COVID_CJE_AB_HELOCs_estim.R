@@ -358,14 +358,9 @@ cat(print(out_xtable), file = tex_file_name, append = FALSE)
 
 
 
-
-
-
-
 ##################################################
 # Analysis of Forecasts
 ##################################################
-
 
 
 #--------------------------------------------------
@@ -421,6 +416,7 @@ KL_forecast_02 <- cbind(KLD_forecast_test_orig, KLD_forecast_test_mo[, 2:3])
 KL_forecast_02[, 'stmt_date'] <- forecast_date_labels
 
 
+
 # Output results to TeX file.
 out_table <- KL_forecast_02[, c(6, 2:5)]
 colnames(out_table) <- c('Month',
@@ -431,8 +427,10 @@ colnames(out_table) <- c('Month',
 out_xtable <- xtable(out_table, digits = 4, label = 'tab:for_02',
                      caption = 'Out-of-sample Test with Fixed vs. Monthly Transition Matrices (k-step-ahead forecasts)')
 
+
 tex_file_name <- sprintf('%s_KLD_kstep_fixed_vs_monthly_02.tex', file_tag)
 tex_file_name <- sprintf('%s/%s', out_dir, tex_file_name)
+
 
 # Print table to tex file.
 cat(print(out_xtable), file = tex_file_name, append = FALSE)
@@ -471,6 +469,8 @@ for (date_num in 1:length(forecast_date_list)) {
   dev.off()
 
 }
+
+
 
 
 #--------------------------------------------------
