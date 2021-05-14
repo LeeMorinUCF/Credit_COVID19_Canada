@@ -6,7 +6,7 @@ This is the code base to accompany the manuscript
 *Consumer Credit Usage in Canada during the Coronavirus Pandemic* 
 by Ho, Morin, Paarsch and Huynh in the Canadian Journal of Economics, 2021
 
-Any updates will be available on the GitHub code repository, 
+Any updates will be available on the GitHub code repository 
 available at the following link: 
 [Credit_COVID19_Canada](https://github.com/LeeMorinUCF/Credit_COVID19_Canada)
 
@@ -63,19 +63,51 @@ These scripts are stored in the ```Code/Data_Prep``` folder.
   and generates the dataset ```tu_sample_bc.csv```. 
   This dataset is sufficient to run the 
   analysis of credit-card accounts on the nation-wide sample. 
+
+1. Run the script ```tu_agg_series_bc.slurm```, 
+  which runs the script ```tu_agg_series.py```
+  and generates the dataset ```tu_agg_bc.csv```. 
+  This dataset provides the input for
+  panel (a) of Figure 1: Consumers' Outstanding Balances, 2017-2020
+  for credit-card accounts on the nation-wide sample. 
   
-1. Run the script ```tu_bc_comp.slurm```, 
-  which runs the script ```tu_bc_comp.py```
-  and generates the dataset ```tu_bc_comp.csv```. 
+
+1. Run the script ```tu_sample_AB_bc.slurm```, 
+  which runs the script ```tu_sample_AB_bc.py```
+  and generates the dataset ```tu_sample_AB_bc.csv```. 
+  This dataset is sufficient to run the 
+  analysis of credit-card accounts on the Alberta sample. 
+  
+
+1. Run the script ```tu_agg_series_AB_bc.slurm```, 
+  which runs the script ```tu_agg_series_AB.py```
+  and generates the dataset ```tu_agg_AB_bc.csv```. 
+  This dataset provides the input for
+  panel (a) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
+  for credit-card accounts on the Alberta sample. 
+  
+  
+  
+1. Run the script ```TU_vs_Nilson_comp.slurm```, 
+  which runs the script ```TU_vs_Nilson_comp.py```
+  and generates the dataset ```TU_vs_Nilson_num_accts.csv```. 
   This dataset provides the input for
   Table A1: Comparison of Accounts at the Credit Agency 
   with Nation-Wide Totals in The Nilson Report. 
   
-1. Run the script ```tu_bc_prov.slurm```, 
-  which runs the script ```tu_bc_prov.py```
-  and generates the dataset ```tu_bc_prov.csv```. 
+1. Run the script ```TU_vs_BoC_comp.slurm```, 
+  which runs the script ```TU_vs_BoC_comp.py```
+  and generates the dataset ```TU_vs_BoC_totals.csv```. 
   This dataset provides the input for
-  FIGURE A1.2: Credit Data Coverage for Adults in Canada, by Province. 
+  Figure A1.1: Time Series of Aggregate Credit-Card Balances. 
+  
+1. Run the script ```TU_vs_StatsCan_comp```, 
+  which runs the script ```TU_vs_StatsCan_comp.py```
+  and generates the dataset ```CC_TU_vs_StatsCan.csv```. 
+  This dataset provides the input for
+  Figure A1.2: Credit Data Coverage for Adults in Canada, by Province. 
+  
+  
 
 1. Run the script ```df_ind_heloc.slurm```, 
   which runs a sequence of Python scripts ```cr_use_heloc_Y1Y2.py```, 
@@ -91,58 +123,25 @@ These scripts are stored in the ```Code/Data_Prep``` folder.
   and generates the dataset ```tu_sample_heloc.csv```. 
   This dataset is sufficient to run the 
   analysis of HELOC accounts on the nation-wide sample. 
+  
 
-1. Run the script ```tu_ind_AB_bc.slurm```, 
-  which runs the script ```tu_ind_AB_bc.py```
-  and generates a temporary parquet file ```df_ind.parquet```. 
-  This dataset comprises individual-level data 
-  that is sufficient to run the data manipulation for 
-  credit-card accounts on the nation-wide sample. 
+1. Run the script ```tu_agg_series_heloc.slurm```, 
+  which runs the script ```tu_agg_series.py```
+  and generates the dataset ```tu_agg_heloc.csv```. 
+  This dataset provides the input for
+  panel (b) of Figure 1: Consumers' Outstanding Balances, 2017-2020
+  for HELOC accounts on the nation-wide sample. 
+  
 
-1. Run the script ```tu_sample_AB_bc.slurm```, 
-  which runs the script ```tu_sample_AB_bc.py```
-  and generates the dataset ```tu_sample_AB_bc.csv```. 
-  This dataset is sufficient to run the 
-  analysis of credit-card accounts on the Alberta sample. 
-
-1. Run the script ```tu_ind_AB_he.slurm```, 
-  which runs the script ```tu_ind_AB_heloc.py```
-  and generates a temporary parquet file ```df_ind.parquet```. 
-  This dataset comprises individual-level data 
-  that is sufficient to run the data manipulation for 
-  HELOC accounts on the Alberta sample. 
-
-1. Run the script ```tu_sample_AB_he.slurm```, 
+1. Run the script ```tu_sample_AB_heloc.slurm```, 
   which runs the script ```tu_sample_AB_heloc.py```
   and generates the dataset ```tu_sample_AB_heloc.csv```. 
   This dataset is sufficient to run the 
   analysis of HELOC accounts on the Alberta sample. 
-  
 
-1. Run the script ```tu_bc_agg.slurm```, 
-  which runs the script ```tu_agg_bc.py```
-  and generates the dataset ```tu_BC_time.csv```. 
-  This dataset provides the input for
-  panel (a) of Figure 1: Consumers' Outstanding Balances, 2017-2020
-  for credit-card accounts on the nation-wide sample. 
-
-1. Run the script ```tu_heloc_agg.slurm```, 
-  which runs the script ```tu_agg_heloc.py```
-  and generates the dataset ```tu_HE_time.csv```. 
-  This dataset provides the input for
-  panel (b) of Figure 1: Consumers' Outstanding Balances, 2017-2020
-  for HELOC accounts on the nation-wide sample. 
-
-1. Run the script ```tu_AB_bc_agg.slurm```, 
-  which runs the script ```tu_AB_agg_bc.py```
-  and generates the dataset ```tu_AB_BC_time.csv```. 
-  This dataset provides the input for
-  panel (a) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
-  for credit-card accounts on the Alberta sample. 
-
-1. Run the script ```tu_AB_heloc_agg.slurm```, 
-  which runs the script ```tu_AB_agg_he.py```
-  and generates the dataset ```tu_AB_HE_time.csv```. 
+1. Run the script ```tu_agg_series_AB_heloc.slurm```, 
+  which runs the script ```tu_agg_series_AB.py```
+  and generates the dataset ```tu_agg_AB_heloc.csv```. 
   This dataset provides the input for
   panel (b) of Figure 8: Consumers' Outstanding Balances, Alberta, 2012-2016
   for HELOC accounts on the Alberta sample. 
@@ -162,10 +161,10 @@ including the main datasets
 ```tu_sample_bc.csv```, ```tu_sample_heloc.csv```, 
 ```tu_sample_AB_bc.csv```, and ```tu_sample_AB_heloc.csv```, 
 along with the auxiliary datasets for time-series plots
-```tu_BC_time.csv```, ```tu_AB_BC_time.csv```, 
-```tu_AB_BC_time.csv```, and ```tu_AB_HE_time.csv```, 
+```tu_agg_bc.csv```, ```tu_agg_heloc.csv```, 
+```tu_agg_AB_bc.csv```, and ```tu_agg_AB_heloc.csv```, 
 and for figures in the appendix
-```tu_bc_comp.csv``` and ```tu_bc_prov.csv```.
+```TU_vs_BoC_num_accts.csv``` and ```CC_TU_vs_StatsCan.csv```.
  
 1. Run ```COVID_CJE.sh``` in a terminal window from the ```Credit_COVID19_Canada``` folder. 
 
@@ -195,7 +194,7 @@ in the ```Data``` folder.
 in a terminal window from the ```Credit_COVID19_Canada``` folder. 
 
 
-1. Obtain the tex files 
+1. Obtain the ```tex``` files 
 ```CC_KLD_kstep_monthly_01.tex``` and
 ```CC_KLD_vs_sample_01.tex``` 
 with numbers for columns 2 and 3 of Tables 1 and 2 
@@ -219,7 +218,7 @@ where ```MM``` represents the two-digit month of the
 #### Nation-Wide Sample of HELOC Accounts
 
 1. Place the dataset
-```tu_sample_he.csv```
+```tu_sample_heloc.csv```
 in the ```Data``` folder. 
 1. Run ```Rscript COVID_CJE_HELOCs.R``` 
 in a terminal window from the ```Credit_COVID19_Canada``` folder. 
@@ -232,13 +231,13 @@ with numbers for columns 4 and 5 of Tables 1 and 2
 from the ```Tables``` folder. 
 
 1. Obtain the images
-for panels (a) of Figures 4 and 5 in the ```eps``` files
+for panels (b) of Figures 4 and 5 in the ```eps``` files
 ```HE_hist_grp.eps``` and 
 ```HE_3D_probs_discrete_1.eps```
 from the ```Figures``` folder.
 
 1. Obtain the images
-for Figures 4 and 6 in the ```eps``` files
+for Figures 5 and 7 in the ```eps``` files
 ```HE_dev_pct_sample_2020_MM.eps``` and 
 ```HE_obs_vs_for_dev_pct_monthly_2020-MM.eps```
 from the ```Figures``` folder, 
@@ -250,7 +249,7 @@ where ```MM``` represents the two-digit month of the
 #### Alberta Sample of Credit-Card Accounts
 
 1. Place the dataset 
-```tu_AB_sample_bc.csv```
+```tu_sample_AB_bc.csv```
 in the ```Data``` folder. 
 1. Run ```Rscript COVID_CJE_AB_Cards.R``` 
 in a terminal window from the ```Credit_COVID19_Canada``` folder. 
@@ -265,7 +264,7 @@ in the ```Figures``` folder.
 #### Alberta Sample of HELOC Accounts
 
 1. Place the dataset 
-```tu_AB_sample_he.csv```
+```tu_sample_AB_heloc.csv```
 in the ```Data``` folder. 
 1. Run ```Rscript COVID_CJE_AB_HELOCs.R``` 
 in a terminal window from the ```Credit_COVID19_Canada``` folder. 
@@ -283,8 +282,6 @@ in the ```Figures``` folder.
 For instructions for generating the remaining tables and figures, 
 see the section below
 "Generating Tables and Figures Individually".
-
-
 
 
 
@@ -335,13 +332,15 @@ These datasets have the same format as for
 ```tu_sample_bc.csv``` and ```tu_sample_he.csv```, 
 described above. 
 
+
+
 ### Auxiliary datasets
 
 #### Time series plots: nation-wide sample
 
 The ```Data``` folder also contains two datasets for generating 
 aggregate time-series in Figure 1. 
-The files ```tu_BC_time.csv``` and ```tu_HE_time.csv``` contain 
+The files ```tu_agg_bc.csv``` and ```tu_agg_heloc.csv``` contain 
 time series of aggregate statistics throughout the sample. 
 
 These files both contain the following variables.
@@ -359,15 +358,17 @@ indicating the month in which the data were reported by the bureau.
 The ```Data``` folder also contains another pair of datasets 
 for generating 
 aggregate time-series in Figure 8. 
-The files ```tu_AB_BC_time.csv``` and ```tu_AB_HE_time.csv``` 
+The files ```tu_agg_AB_bc.csv``` and ```tu_agg_AB_heloc.csv``` 
 contain time series of aggregate statistics throughout the sample, 
 in an identical format, except that these were
 restricted to the province of Alberta. 
 
+
 #### Validation of aggregate credit-card balances
 
 A dataset of time series of aggregate outstanding credit-card balances
-is required to generate Figure A1.1. These data are stored in a file ```BoC_tot_Bal.csv```, 
+is required to generate Figure A1.1. 
+These data are stored in a file ```BoC_tot_Bal.csv```, 
 which includes the following columns.
 
 1. ```Date``` in ```DD/MM/YYYY``` format, representing the last day of each month. 
@@ -507,8 +508,8 @@ we calculated the same summary statistics
 using the sample drawn from the database. 
 
 The remaining information was obtained from running the script
-```NAME_OF_SCRIPT.py```, which produced the following summary dataset, 
-called ```NAME_OF_DATSET.csv```, found in the Data folder. 
+```TU_vs_Nilson_comp.py```, which produced the following summary dataset, 
+called ```TU_vs_BoC_num_accts.csv```, found in the Data folder. 
 
 
 

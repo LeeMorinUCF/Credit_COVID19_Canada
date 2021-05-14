@@ -65,7 +65,7 @@ data_dir <- 'Data'
 # Set file extension for figures.
 fig_ext <- 'eps'
 
-in_file_name <- sprintf('%s/TU_vs_BoC_num_accts.csv', data_dir)
+in_file_name <- sprintf('%s/TU_vs_BoC_totals.csv', data_dir)
 out_file_name <- sprintf('%s/TU_vs_BoC_comparison.%s', data_dir, fig_ext)
 
 
