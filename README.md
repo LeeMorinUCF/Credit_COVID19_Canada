@@ -19,9 +19,8 @@ Under the contractual agreement with TransUnion,
 the data are not publicly available. 
 The Bank of Canada does, however, have a process for external researchers 
 to work with these data. 
-The Bank of Canada's Financial System Research Center 
-is a hub for research on household finance 
-(https://www.bankofcanada.ca/research/financial-system-research-centre/). 
+The Bank of Canada's [Financial System Research Center](https://www.bankofcanada.ca/research/financial-system-research-centre/) 
+is a hub for research on household finance. 
 Interested parties, who are Canadian citizens or permanent residents, 
 can contact Jason Allen (Jallen@bankofcanada.ca) 
 or the Managing Director of research Jim MacGee (JMacGee@bankofcanada.ca).
@@ -53,8 +52,6 @@ The set of numbers in some tables
 are taken directly from the *The Nilson Report*, 
 Issue 1173, April 2020, 
 and are available [here](https://nilsonreport.com/publication_newsletter_archive_issue.php?issue=1173). 
-
-Datafile: `CAINC30__ALL_AREAS_1969_2018.csv`
 
 ### 2016 Canadian Census
 
