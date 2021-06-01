@@ -12,7 +12,8 @@ available at the following link:
 
 ## Data Availability
 
-The primary data source is the TransUnion credit bureau. 
+### TransUnion&reg; Data
+The primary data source is anonymized consumer credit data from TransUnion&reg;. 
 Data are provided to the Bank of Canada on a monthly basis. 
 Under the contractual agreement with TransUnion, 
 the data are not publicly available. 
@@ -34,13 +35,42 @@ the external researcher can access the data
 so long as they have a Bank of Canada affiliation. 
 All research is vetted by Bank of Canada senior staff prior to publication. 
 
+### Regulatory Filings by the Bank of Canada (formerly E2)
+
+The Bank of Canada’s historical credit aggregates are available in the 
+[Banking and Financial Statistics table](https://www.bankofcanada.ca/rates/banking-and-financial-statistics/). 
+Since October 2020, Statistics Canada produces monthly credit aggregates 
+that aligns with the Statistics Canada’s National Balance Sheet Accounts program. 
+These new credit aggregates are available from tables at Statistics Canada: 
+[Consumer credit, outstanding balances of selected holders](https://www150.statcan.gc.ca/t1/tbl1/en/tv.action?pid=1010011701) (CANSIM table 10-10-0117-01). 
+For details, see the Bank of Canada's announcement [*Bank of Canada and Statistics Canada to move to a single set of credit statistics*](https://www.bankofcanada.ca/2019/10/bank-canada-statistics-canada-move-single-set-credit-statistics/).
+
+
+### The Nilson Report
+
+
+The set of numbers in some tables
+are taken directly from the *The Nilson Report*, 
+Issue 1173, April 2020, 
+and are available [here](https://nilsonreport.com/publication_newsletter_archive_issue.php?issue=1173). 
+
+Datafile: `CAINC30__ALL_AREAS_1969_2018.csv`
+
+### 2016 Canadian Census
+
+The number of credit-card account holders aged 20 and above and
+other figures were obtained from Statistics Canada in the table called
+*Estimates of population (2016 Census and administrative data), by age group 
+  and sex for July 1st, Canada, provinces, territories, 
+  health regions (2018 boundaries) and peer groups, *
+Table: 17-10-0134-01.
 
 
 # Instructions:
 
 The workflow proceeds in two stages: 
 one set of instructions outlines the operations to transform the raw data in the 
-TransUnion database into the datasets that are the inputs for the statistical analysis
+TransUnion&reg; database into the datasets that are the inputs for the statistical analysis
 in the next stage. 
 
 
@@ -504,7 +534,7 @@ are taken directly from the *The Nilson Report*,
 Issue 1173, April 2020, 
 and are available [here](https://nilsonreport.com/publication_newsletter_archive_issue.php?issue=1173). 
 
-To compare with the contents of the TransUnion database, 
+To compare with the contents of the TransUnion&reg; database, 
 we calculated the same summary statistics 
 using the sample drawn from the database. 
 The remaining information was obtained from running the script
@@ -681,7 +711,8 @@ The ```csv``` files in the Data folder
 were generated on the 
 EDITH 2.0 High Performance cluster 
 housed at the Bank of Canada. 
-It is a cluster of
+
+<!--- It is a cluster of
 Nvidia Tesla K80 GPU Accelerators,
 each with 12 GB of GDDR5 on-board memory, 
 running
@@ -689,8 +720,8 @@ running
 with base core clock speed of 560 MHz
 boost clocks from 562 MHz to 875 MHz, 
 and with a memory clock speed of 2.5 GHz on
-48 pieces of 256M � 16 GDDR5 SDRAM, 
-producing a memory bandwidth of 240GB/s per GPU. 
+48 pieces of 256M ? 16 GDDR5 SDRAM, 
+producing a memory bandwidth of 240GB/s per GPU. --->
 
 For the queries that generated the datasets, 
 36 CPUs with 240 GB of memory were sufficient
@@ -840,3 +871,10 @@ url: https://nilsonreport.com/publication_newsletter_archive_issue.php?issue=117
 - Chartered bank selected assets: Month-end (formerly C1), Credit cards, 
   Bank of Canada, accessed June 2020. 
 
+## Acknowledgements
+
+The views expressed are those of the authors; 
+no responsibility for these views should be attributed to the Bank of Canada; 
+all errors are the responsibility of the authors. 
+We thank the HPC team at the Bank of Canada 
+for their excellent assistance with the EDITH 2.0 High Performance Cluster.
